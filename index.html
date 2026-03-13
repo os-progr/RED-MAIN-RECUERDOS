@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Un mundo hecho para ti 🌹</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@300;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --obsidian: #050505;
+            --crimson: #991b1b;
+            --crimson-light: #ef4444;
+            --silver: #e2e8f0;
+            --rose-gold: #fbcfe8; /* Rose gold / Pinkish gold */
+            --glow-red: rgba(153, 27, 27, 0.4);
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --platinum: #f8fafc;
+            --gold-subtle: #d4af37;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(-45deg, #050505, #1a0505, #0a0a0a, #1a0510);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            overflow-x: hidden;
+            position: relative;
+            color: var(--silver);
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Patrón de fondo sutil con pétalos */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 10c2-2 5-2 7 0s2 5 0 7l-7 7-7-7c-2-2-2-5 0-7s5-2 7 0z' fill='%23ef4444' fill-opacity='0.03'/%3E%3C/svg%3E");
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .romantic-font {
+            font-family: 'Dancing Script', cursive;
+            color: var(--silver);
+        }
+
+        /* Estilo para la lluvia de flores */
+        .flower {
+            position: fixed;
+            pointer-events: none;
+            z-index: 10;
+            opacity: 0;
+            animation: rain linear infinite;
+        }
+
+        @keyframes rain {
+            0% {
+                transform: translateY(-10vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) translateX(100px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .petal-burst {
+            position: fixed;
+            pointer-events: none;
+            z-index: 100;
+            animation: burstOut 1.5s ease-out forwards;
+        }
+
+        @keyframes burstOut {
+            0% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(0) rotate(var(--tr));
+                opacity: 0;
+            }
+        }
+
+        .glass {
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+        }
+
+        .hidden-content {
+            display: none;
+        }
+
+        .fade-in {
+            animation: fadeIn 2s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* DAWN MODE THEME */
+        body.dawn-mode {
+            background: linear-gradient(-45deg, #2c1a1a, #5d2b2b, #8b4513, #daa520);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #4a342e;
+        }
+
+        .dawn-mode .glass {
+            background: rgba(255, 255, 255, 0.7);
+            border-color: rgba(212, 175, 55, 0.3);
+            color: #4a342e;
+        }
+
+        .dawn-mode .romantic-font, .dawn-mode .text-silver, .dawn-mode .text-gray-400 {
+            color: #5d4037;
+        }
+
+        .dawn-mode .stat-card {
+            background: rgba(255, 255, 255, 0.5);
+            color: #5d4037;
+        }
+
+        /* CAPSULE STYLES */
+        .capsule-timer {
+            font-family: 'Courier New', Courier, monospace;
+            background: rgba(0,0,0,0.5);
+            padding: 20px;
+            border-radius: 20px;
+            display: inline-flex;
+            gap: 20px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        .timer-unit {
+            text-align: center;
+        }
+
+        .timer-val {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+            color: var(--crimson-light);
+            text-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
+        }
+
+        .timer-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            opacity: 0.6;
+        }
+
+        .text-crimson { color: var(--crimson-light); }
+        .text-silver { color: var(--silver); }
+        .border-crimson { border-color: var(--crimson); }
+
+        .input-love {
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+
+        .input-love:focus {
+            box-shadow: 0 0 20px rgba(153, 27, 27, 0.4);
+            transform: scale(1.02);
+            border-color: var(--crimson);
+        }
+
+        /* ADMIRATION SECTION */
+        .admiration-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 2rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .admiration-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+            border-color: var(--crimson);
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.1);
+        }
+
+        /* PROGRESS JOURNAL (DIARIO) */
+        .journal-container {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .journal-entry {
+            position: relative;
+            margin-bottom: 2.5rem;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .journal-entry::before {
+            content: '';
+            position: absolute;
+            left: -2.35rem;
+            top: 0.5rem;
+            width: 10px;
+            height: 10px;
+            background: var(--crimson);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--crimson);
+        }
+
+        .journal-date {
+            font-size: 0.8rem;
+            color: var(--silver);
+            opacity: 0.6;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        /* MAILBOX (BUZÓN) */
+        .mailbox-container textarea {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--silver);
+            resize: none;
+            transition: all 0.3s ease;
+        }
+
+        .mailbox-container textarea:focus {
+            outline: none;
+            border-color: var(--crimson);
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.1);
+        }
+
+        .submission-success {
+            display: none;
+            color: #10b981;
+            margin-top: 1rem;
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(10px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .number-box {
+            display: inline-block;
+            min-width: 1.2em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+
+        .photo-frame {
+            background: #1a1a1a;
+            padding: 15px 15px 50px 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            border-radius: 4px;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            border: 1px solid #333;
+        }
+
+        /* ADMIN PANEL - PREMIUM STYLE */
+        #admin-panel {
+            display: none;
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            width: 350px;
+            max-height: 85vh;
+            overflow-y: auto;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2px solid var(--crimson);
+            border-radius: 2rem;
+            padding: 2rem;
+            z-index: 9999;
+            box-shadow: 0 0 50px rgba(153, 27, 27, 0.4);
+            animation: slideInRight 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .admin-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .admin-input:focus {
+            border-color: var(--crimson);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .admin-btn {
+            width: 100%;
+            background: var(--crimson);
+            color: white;
+            font-weight: bold;
+            padding: 12px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+        }
+
+        .admin-btn:hover {
+            transform: scale(1.02);
+            background: #7f1d1d;
+            box-shadow: 0 0 15px var(--crimson);
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .photo-frame::after {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(2px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.05) rotate(0deg) !important;
+            z-index: 30;
+            box-shadow: 0 20px 40px rgba(244, 114, 182, 0.2);
+        }
+
+        .photo-frame img {
+            transition: transform 0.2s cubic-bezier(0, 0, 0.2, 1);
+            transform: scale(1.15); /* Slightly larger to prevent gaps during parallax */
+        }
+
+        .parallax-rose {
+            position: absolute;
+            pointer-events: none;
+            z-index: 40;
+            filter: drop-shadow(0 15px 25px rgba(251, 113, 133, 0.2));
+            user-select: none;
+        }
+
+        .img-placeholder {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: #0d0d0d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed #444;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+
+        .img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+
+        .animate-spin-slow {
+            animation: spin 8s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Efecto Rastro de Corazones */
+        .heart-trail {
+            position: fixed;
+            pointer-events: none;
+            font-size: 20px;
+            animation: floatUp 1s ease-out forwards;
+            z-index: 100;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-40px) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Efecto Máquina de Escribir */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Estilos para Ábrela Cuando */
+        .envelope-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .envelope-card {
+            background: #111;
+            border: 2px solid #333;
+            border-radius: 20px;
+            padding: 25px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            color: var(--silver);
+        }
+
+
+        /* DASHBOARD SECTION 2.0 - ULTRA GLASS */
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 32px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2),
+                        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at var(--mouseX) var(--mouseY), rgba(153, 27, 27, 0.15) 0%, transparent 80%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: rgba(153, 27, 27, 0.4);
+            box-shadow: 0 25px 50px rgba(153, 27, 27, 0.2);
+        }
+
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 200;
+            color: var(--platinum);
+            display: block;
+            margin-bottom: 8px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--crimson-light);
+            font-weight: 700;
+            opacity: 0.8;
+        }
+
+        /* ENERGY BAR */
+        .effort-bar-container {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            margin-top: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .effort-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #7f1d1d, #ef4444, #fbcfe8);
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+            transition: width 2.5s cubic-bezier(0.1, 0, 0, 1);
+        }
+
+        /* STARRY BACKGROUND */
+        #star-canvas {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* JOURNAL JOURNEY UI */
+        .journal-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--crimson), transparent);
+            opacity: 0.3;
+        }
+
+        .journal-entry {
+            position: relative;
+            background: rgba(20, 20, 20, 0.4) !important;
+            border: 1px solid var(--glass-border) !important;
+            margin-bottom: 50px !important;
+            z-index: 10;
+        }
+
+        .journal-entry::after {
+            content: "";
+            position: absolute;
+            top: 24px;
+            left: -40px;
+            width: 12px;
+            height: 12px;
+            background: var(--crimson);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--crimson);
+            z-index: 20;
+        }
+
+        /* Glow effects for media */
+        .journal-entry img, .journal-entry video {
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .journal-entry:hover img {
+            transform: scale(1.02);
+            border-color: var(--crimson);
+        }
+
+        /* Particles Layer */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+
+
+        /* REVEAL ON SCROLL */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* WISHLIST STYLES */
+        .wishlist-card {
+            background: rgba(40, 40, 40, 0.4);
+            border: 1px solid var(--glass-border);
+            padding: 20px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s;
+        }
+
+        .wishlist-card.completed {
+            border-color: #d4af37;
+            background: rgba(212, 175, 55, 0.05);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .wishlist-check {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .completed .wishlist-check {
+            background: #d4af37;
+            border-color: #d4af37;
+            color: black;
+        }
+
+        /* MAILBOX STYLES */
+        .mailbox-container {
+            background: linear-gradient(145deg, #1a0505, #000);
+            border: 1px solid rgba(153, 27, 27, 0.2);
+            padding: 40px;
+            border-radius: 40px;
+            text-align: center;
+        }
+
+        .mailbox-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 20px;
+            border-radius: 20px;
+            width: 100%;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .mailbox-input:focus {
+            border-color: var(--crimson);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- CIELO ESTRELLADO DINÁMICO -->
+    <canvas id="star-canvas"></canvas>
+
+    <!-- PANEL DE ADMINISTRADOR (OCULTO) -->
+    <div id="admin-panel" class="glass">
+        <h4 class="romantic-font text-2xl text-silver mb-4 border-b border-white/10 pb-2">Panel de Control ⚔️</h4>
+        
+        <div class="mb-6 border-b border-white/5 pb-4">
+            <p class="text-xs text-red-500 uppercase font-bold mb-2">Publicar en Diario</p>
+            <textarea id="admin-journal-text" placeholder="¿Qué progreso hiciste hoy?" class="admin-input h-20 mb-2"></textarea>
+            <div class="grid grid-cols-2 gap-2 mb-2">
+                <select id="admin-journal-type" class="admin-input mb-0 h-10 py-0 overflow-hidden">
+                    <option value="text">Solo Texto</option>
+                    <option value="image">Imagen</option>
+                    <option value="video">Video</option>
+                    <option value="audio">Audio</option>
+                    <option value="pdf">Enlace PDF</option>
+                </select>
+                <div class="relative">
+                    <input type="file" id="admin-journal-file" class="hidden" onchange="updateFileName('journal')">
+                    <label for="admin-journal-file" id="label-journal-file" class="admin-input mb-0 h-10 flex items-center justify-center cursor-pointer hover:bg-white/10 transition-all text-xs overflow-hidden text-ellipsis whitespace-nowrap">
+                        📁 Seleccionar
+                    </label>
+                </div>
+            </div>
+            <input type="text" id="admin-journal-attachment" placeholder="O pega URL externa aquí" class="admin-input text-xs">
+            <button onclick="adminAddJournal()" class="admin-btn">Publicar Hito 🥀</button>
+        </div>
+
+        <div class="mb-6">
+            <p class="text-xs text-red-500 uppercase font-bold mb-2">Nueva Foto/Video Galería</p>
+            <div class="grid grid-cols-2 gap-2 mb-2">
+                <select id="admin-gallery-type" class="admin-input mb-0 h-10 py-0 overflow-hidden">
+                    <option value="image">Imagen</option>
+                    <option value="video">Video</option>
+                </select>
+                <div class="relative">
+                    <input type="file" id="admin-gallery-file" class="hidden" onchange="updateFileName('gallery')">
+                    <label for="admin-gallery-file" id="label-gallery-file" class="admin-input mb-0 h-10 flex items-center justify-center cursor-pointer hover:bg-white/10 transition-all text-xs overflow-hidden text-ellipsis whitespace-nowrap">
+                        📁 Seleccionar
+                    </label>
+                </div>
+            </div>
+            <input type="text" id="admin-gallery-src" placeholder="O pega URL externa aquí" class="admin-input text-xs">
+            <button onclick="adminAddGallery()" class="admin-btn">Añadir a Galería 📸</button>
+        </div>
+
+        <div class="mb-6 border-b border-white/5 pb-4">
+            <p class="text-xs text-yellow-500 uppercase font-bold mb-2">Gestionar Deseos</p>
+            <div class="flex gap-2 mb-2">
+                <input type="text" id="admin-wish-text" placeholder="Escribir nuevo deseo..." class="admin-input mb-0">
+                <button onclick="adminAddWish()" class="bg-yellow-600 text-white px-4 rounded-xl text-xs font-bold">Añadir</button>
+            </div>
+        </div>
+
+        <div class="mb-6 border-b border-white/5 pb-4">
+            <p class="text-xs text-blue-500 uppercase font-bold mb-2">Música del Sitio</p>
+            <div class="flex gap-2 mb-2">
+                <input type="text" id="admin-song-id" placeholder="ID de YouTube (ej: b_CpWmkhwq0)" class="admin-input mb-0 text-xs">
+                <button onclick="adminUpdateSong()" class="bg-blue-600 text-white px-4 rounded-xl text-xs font-bold">Cambiar</button>
+            </div>
+            <p class="text-[9px] text-gray-500">Pega el código que sale después de v= en el link de YouTube.</p>
+        </div>
+
+        <div class="mb-6 border-b border-white/5 pb-4">
+            <p class="text-xs text-purple-500 uppercase font-bold mb-2">🕰️ Cápsula del Tiempo</p>
+            <input type="datetime-local" id="admin-capsule-date" class="admin-input mb-2 w-full text-xs">
+            <textarea id="admin-capsule-message" placeholder="Mensaje secreto para el futuro..." class="admin-input w-full h-20 mb-2"></textarea>
+            <button onclick="adminUpdateCapsule()" class="bg-purple-700 text-white w-full py-2 rounded-xl text-xs font-bold hover:bg-purple-600">Programar Cápsula ⏳</button>
+        </div>
+
+        <div class="mb-6 border-b border-white/5 pb-4">
+            <p class="text-xs text-purple-500 uppercase font-bold mb-2">Mensajes Recibidos</p>
+            <div id="admin-messages-list" class="max-h-32 overflow-y-auto text-[10px] space-y-2">
+                <!-- Mensajes dinámicos -->
+            </div>
+        </div>
+
+        <button onclick="document.getElementById('admin-panel').style.display='none'" class="text-gray-500 text-xs hover:text-white w-full text-center mt-2">Cerrar Panel</button>
+    </div>
+
+    <!-- PANTALLA DE BLOQUEO -->
+    <div id="music-player"></div>
+    <div id="lock-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-black p-6 text-center">
+        <div class="glass p-10 rounded-[2.5rem] shadow-2xl max-w-md w-full border-2 border-white/10">
+            <div class="mb-6 inline-block p-4 bg-red-950/50 rounded-full animate-bounce">
+                <span class="text-3xl">🥀</span>
+            </div>
+            <h1 class="romantic-font text-5xl text-silver mb-6">Hola, mi amor...</h1>
+            <p class="text-gray-400 mb-8 font-medium">Introduce nuestra fecha especial (DD/MM/AAAA) para abrir tu
+                regalo:</p>
+
+            <div class="relative max-w-xs mx-auto">
+                <input type="text" id="password" maxlength="10" placeholder="DD/MM/AAAA"
+                    class="input-love w-full p-5 rounded-3xl border-2 border-zinc-800 focus:border-red-900 outline-none text-center text-3xl mb-4 text-red-600 font-bold bg-black/40">
+            </div>
+
+            <p id="error-msg" class="text-red-500 mt-4 text-sm opacity-0 transition-opacity duration-300">Esa no es
+                nuestra fecha especial, intenta de nuevo mi vida...</p>
+        </div>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div id="main-content" class="hidden-content min-h-screen pb-20 fade-in">
+
+        <!-- Header -->
+        <header class="relative h-screen flex flex-col items-center justify-center text-center p-6">
+            <div class="animate-pulse mb-8 relative">
+                <div class="absolute inset-0 bg-red-900 blur-2xl opacity-40 rounded-full"></div>
+                <span class="text-7xl relative z-10 text-crimson">🥀</span>
+            </div>
+
+            <h1 class="romantic-font text-7xl md:text-9xl text-silver mb-6 drop-shadow-lg">Para Edith</h1>
+            <p class="text-xl md:text-3xl text-gray-400 max-w-2xl italic font-light">"Desde aquel 09 de noviembre de
+                2022, mi mundo es un lugar mejor gracias a ti."</p>
+
+            <div class="mt-12 glass px-10 py-8 rounded-[3rem] shadow-xl border border-white/5">
+                <p class="text-red-800 font-bold mb-3 uppercase tracking-widest text-sm">Nuestro tiempo juntos:</p>
+                <div id="counter" class="text-3xl md:text-5xl text-silver font-light tracking-tight"></div>
+            </div>
+
+            <div class="absolute bottom-10 animate-bounce">
+                <svg class="w-8 h-8 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </div>
+        </header>
+
+        <!-- Carta de Amor -->
+        <section class="max-w-4xl mx-auto px-6 py-24 relative">
+            <div
+                class="glass p-10 md:p-16 rounded-[3rem] shadow-2xl relative overflow-hidden border border-white/10 text-center">
+                <h2 class="romantic-font text-5xl text-silver mb-10 pb-4 border-b border-zinc-800">Para mi futura
+                    prometida</h2>
+                <div class="space-y-8 text-gray-300 text-xl leading-relaxed font-light" id="letter-container">
+                    <p id="line1" class="min-h-[2rem]"></p>
+                    <p id="line2" class="min-h-[2rem]"></p>
+                    <p id="quote-line"
+                        class="font-medium text-crimson italic bg-black/40 p-8 rounded-3xl border-l-8 border-red-900 shadow-sm opacity-0 transform translate-y-4 transition-all duration-700">
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <!-- SECCIÓN: Lo que admiro de ti -->
+        <section class="max-w-6xl mx-auto px-6 py-24">
+            <h3 class="romantic-font text-center text-5xl text-silver mb-16">Lo que admiro de ti...</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="admiration-card text-center">
+                    <span class="text-4xl mb-4 block">✨</span>
+                    <h4 class="text-xl font-bold text-red-500 mb-2">Tu Fortaleza</h4>
+                    <p class="text-gray-400 text-sm">Admiro cómo enfrentas cada reto con una valentía que me inspira a ser mejor cada día.</p>
+                </div>
+                <div class="admiration-card text-center">
+                    <span class="text-4xl mb-4 block">🤍</span>
+                    <h4 class="text-xl font-bold text-red-500 mb-2">Tu Corazón</h4>
+                    <p class="text-gray-400 text-sm">Tienes la capacidad de perdonar y amar de una forma tan pura que me deja sin palabras.</p>
+                </div>
+                <div class="admiration-card text-center">
+                    <span class="text-4xl mb-4 block">💡</span>
+                    <h4 class="text-xl font-bold text-red-500 mb-2">Tu Inteligencia</h4>
+                    <p class="text-gray-400 text-sm">Me encanta cómo ves el mundo. Siempre tienes la palabra precisa y la visión correcta.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DASHBOARD DE ESFUERZO -->
+        <section class="max-w-6xl mx-auto px-6 py-24 reveal">
+            <h3 class="romantic-font text-center text-5xl text-silver mb-4">Métricas de mi Compromiso</h3>
+            <p class="text-center text-gray-500 mb-16 italic">Visualizando mi esfuerzo real paso a paso</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Días -->
+                <div class="stat-card">
+                    <span id="stat-days" class="stat-value">0</span>
+                    <span class="stat-label">Días de Cambio</span>
+                </div>
+                <!-- Hitos -->
+                <div class="stat-card">
+                    <span id="stat-milestones" class="stat-value">0</span>
+                    <span class="stat-label">Hitos Logrados</span>
+                </div>
+                <!-- Nivel de Dedicación -->
+                <div class="stat-card col-span-2">
+                    <div class="flex justify-between items-end mb-2">
+                        <span class="stat-label">Nivel de Dedicación</span>
+                        <span id="stat-dedication-percent" class="text-rose-gold font-bold">0%</span>
+                    </div>
+                    <div class="effort-bar-container">
+                        <div id="effort-bar" class="effort-bar-fill"></div>
+                    </div>
+                    <p class="text-[10px] text-gray-500 mt-2 uppercase tracking-tighter">Creciendo cada día para nosotros</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: Diario de mi Cambio -->
+        <section class="max-w-4xl mx-auto px-6 py-24 bg-white/5 rounded-[4rem] border border-white/5">
+            <h3 class="romantic-font text-center text-5xl text-silver mb-6">Diario de mi Cambio</h3>
+            <p class="text-center text-gray-500 mb-16 italic">"No son palabras, son mis pasos reales hacia ti."</p>
+            
+            <div id="journal-feed" class="journal-container max-w-2xl mx-auto text-left relative">
+                <!-- Se llenará dinámicamente con JS -->
+            </div>
+        </section>
+
+        <!-- SECCIÓN: El Buzón de Escucha -->
+        <section class="max-w-4xl mx-auto px-6 py-24 text-center">
+            <div class="mailbox-container glass p-12 rounded-[3rem] border border-white/10">
+                <h3 class="romantic-font text-4xl text-silver mb-4">El Buzón de Escucha</h3>
+                <p class="text-gray-500 mb-8 italic">Este espacio es tuyo. Cuando estés lista, aquí estaré para escucharte sin juicios.</p>
+                
+                <textarea id="mailbox-input" 
+                    placeholder="Escribe lo que necesites decirme..." 
+                    class="w-full h-40 p-6 rounded-2xl mb-6 text-lg"
+                ></textarea>
+                
+                <button onclick="submitToMailbox()" 
+                    class="bg-gradient-to-r from-red-900 to-black text-silver font-bold py-4 px-12 rounded-full border border-white/10 transition-all duration-300 transform hover:scale-105">
+                    Enviar a mi corazón 🥀
+                </button>
+                
+                <div id="mailbox-success" class="submission-success">
+                    <span class="text-2xl mr-2">✔️</span> He recibido tu mensaje en mi corazón. Gracias por confiar.
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <!-- SECCIÓN: Razones Dinámicas -->
+        <section class="max-w-4xl mx-auto px-6 py-10 text-center">
+            <div class="glass p-10 rounded-[3rem] border-2 border-white/5 shadow-inner">
+                <h3 class="romantic-font text-4xl text-silver mb-8">Razones por las que te amo...</h3>
+                <div id="reason-text"
+                    class="text-2xl text-gray-400 italic mb-10 min-h-[4rem] flex items-center justify-center px-6">
+                    Presiona el botón para descubrir un pedacito de mi corazón
+                </div>
+                <button onclick="nextReason()"
+                    class="bg-gradient-to-r from-red-900 to-black text-silver font-bold py-4 px-12 rounded-full border border-white/10 transition-all duration-300 transform hover:scale-105 hover:shadow-lg active:scale-95 shadow-md">
+                    Siguiente razón ❤️
+                </button>
+            </div>
+        </section>
+
+        <!-- BOTÓN WHATSAPP -->
+        <div class="text-center pb-24">
+            <a href="https://wa.me/51900779111?text=%C2%A1Amor%2C%20vi%20la%20p%C3%A1gina%20y%20me%20encant%C3%B3%21%20Gracias%20por%20este%20detalle%20tan%20hermoso%20%E2%9D%A4%EF%B8%8F"
+                target="_blank"
+                class="inline-flex items-center gap-3 bg-[#25D366] text-white font-bold py-4 px-10 rounded-full shadow-xl hover:scale-105 transition-transform hover:shadow-2xl">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                </svg>
+                ¡Dímelo por WhatsApp! 💬
+            </a>
+        </div>
+
+        <!-- SECCIÓN: Cápsula del Tiempo -->
+        <section class="max-w-4xl mx-auto px-6 py-24 reveal">
+            <div class="glass p-12 rounded-[4rem] text-center border-2 border-red-900/20 shadow-2xl relative overflow-hidden">
+                <!-- Background Glow -->
+                <div class="absolute -top-24 -right-24 w-64 height-64 bg-red-900/10 rounded-full blur-3xl"></div>
+                
+                <h3 class="romantic-font text-5xl text-silver mb-4">Cápsula del Tiempo</h3>
+                <p class="text-gray-400 mb-10 italic">"Un mensaje guardado en el silencio del tiempo, esperando el momento exacto..."</p>
+                
+                <div id="capsule-locked">
+                    <div class="capsule-timer mb-10">
+                        <div class="timer-unit">
+                            <span id="days" class="timer-val">00</span>
+                            <span class="timer-label">Días</span>
+                        </div>
+                        <div class="timer-unit">
+                            <span id="hours" class="timer-val">00</span>
+                            <span class="timer-label">Hs</span>
+                        </div>
+                        <div class="timer-unit">
+                            <span id="minutes" class="timer-val">00</span>
+                            <span class="timer-label">Min</span>
+                        </div>
+                        <div class="timer-unit">
+                            <span id="seconds" class="timer-val">00</span>
+                            <span class="timer-label">Seg</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span class="text-6xl mb-6 opacity-40">🔒</span>
+                        <p class="text-crimson font-bold tracking-widest uppercase text-sm">Contenido Protegido por el Tiempo</p>
+                    </div>
+                </div>
+
+                <div id="capsule-unlocked" class="hidden">
+                    <div class="text-6xl mb-6">🔓</div>
+                    <div id="capsule-content" class="text-2xl italic leading-relaxed text-silver bg-white/5 p-8 rounded-3xl border border-white/10">
+                        <!-- Mensaje secreto -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOTÓN MODO AMANECER (FLOTANTE IZQUIERDA) -->
+        <button id="dawn-btn" onclick="toggleDawnMode()"
+            class="fixed bottom-6 left-6 z-50 bg-black/90 backdrop-blur-sm p-4 rounded-full shadow-2xl border-2 border-zinc-800 text-2xl hover:scale-110 transition-transform duration-300 text-silver">
+            🌅
+        </button>
+
+        <!-- MURO DE RECUERDOS -->
+        <section class="max-w-6xl mx-auto px-6 py-32">
+            <h3 class="romantic-font text-center text-6xl text-silver mb-4">Nuestra Galería de Amor</h3>
+            <p class="text-center text-gray-500 mb-16 italic text-lg font-light">Nueve momentos que definen nuestra
+                historia</p>
+
+            <div class="text-center mb-16">
+                <button id="unlockGalleryBtn" onclick="unlockGallery()"
+                    class="bg-black text-silver border-2 border-zinc-800 hover:bg-zinc-900 hover:text-white font-bold py-5 px-14 rounded-full shadow-lg transition-all duration-500 transform hover:scale-110 flex items-center gap-4 mx-auto group">
+                    <span class="text-3xl group-hover:rotate-12 transition-transform">⚔️</span>
+                    Revelar nuestros recuerdos
+                </button>
+            </div>
+
+            <div id="galleryContainer" class="hidden opacity-0 transform translate-y-10 transition-all duration-1000 relative">
+                <!-- Foreground Parallax Roses -->
+                <div class="parallax-rose text-6xl top-0 -left-10" data-speed="0.15">🥀</div>
+                <div class="parallax-rose text-5xl top-1/2 -right-12" data-speed="0.25">🥀</div>
+                <div class="parallax-rose text-7xl bottom-0 -left-16" data-speed="0.1">🥀</div>
+                <div class="parallax-rose text-4xl top-1/4 -right-8" data-speed="0.3">🖤</div>
+                <div class="parallax-rose text-6xl bottom-1/4 -left-12" data-speed="0.2">🌹</div>
+                
+                <div class="photo-grid relative z-10" id="photo-grid-api">
+                    <!-- Dinámico -->
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center py-20 border-t border-white/5 mt-10">
+             <p class="text-gray-500 text-sm tracking-widest font-bold uppercase">Desde el 09 de Noviembre de 2022</p>
+        </footer>
+
+        <!-- Controles de Música (Flotante) -->
+        <button id="music-btn" onclick="toggleMusic()"
+            class="fixed bottom-6 right-6 z-50 bg-black/90 backdrop-blur-sm p-4 rounded-full shadow-2xl border-2 border-zinc-800 text-2xl hover:scale-110 transition-transform duration-300 text-silver">
+            🔇
+        </button>
+    </div>
+
+    <script>
+        const CLAVE_CORRECTA = "09112022";
+        const CLAVE_ADMIN = "60257586";
+        let isAdmin = false;
+
+
+
+        const razones = [
+            "Porque tienes la sonrisa más hermosa que mis ojos han visto.",
+            "Por la paciencia infinita que me tienes.",
+            "Porque estar a tu lado me hace querer ser un hombre mejor.",
+            "Por tu forma única de cuidarme.",
+            "Porque eres mi mejor amiga y mi gran amor.",
+            "Porque amo todos nuestros planes juntos.",
+            "Porque sueño despertar contigo cada mañana.",
+            "Por tu fuerza increíble.",
+            "Porque nadie me entiende como tú.",
+            "Porque simplemente eres tú."
+        ];
+        let currentReasonIndex = -1;
+        let player;
+        let isMusicPlaying = false;
+
+        // MÚSICA DINÁMICA
+        async function onYouTubeIframeAPIReady() {
+            try {
+                const res = await fetch('/api/config');
+                const config = await res.json();
+                const videoId = config.songId || 'b_CpWmkhwq0';
+
+                player = new YT.Player('music-player', {
+                    height: '1',
+                    width: '1',
+                    videoId: videoId,
+                    playerVars: {
+                        'playsinline': 1,
+                        'controls': 0,
+                        'loop': 1,
+                        'playlist': videoId,
+                        'origin': window.location.origin,
+                        'enablejsapi': 1
+                    },
+                    events: {
+                        'onReady': onPlayerReady
+                    }
+                });
+            } catch (err) {
+                console.error("Error cargando música:", err);
+            }
+        }
+
+        function onPlayerReady(event) {
+            // Player is ready
+        }
+
+        function toggleMusic() {
+            if (!player) return;
+            const btn = document.getElementById('music-btn');
+            if (isMusicPlaying) {
+                player.pauseVideo();
+                btn.innerHTML = '🔇';
+                btn.classList.remove('animate-spin-slow');
+            } else {
+                player.playVideo();
+                btn.innerHTML = '🎵';
+                btn.classList.add('animate-spin-slow');
+            }
+            isMusicPlaying = !isMusicPlaying;
+        }
+
+        function nextReason() {
+            const textElement = document.getElementById('reason-text');
+            textElement.style.opacity = 0;
+            setTimeout(() => {
+                currentReasonIndex = (currentReasonIndex + 1) % razones.length;
+                textElement.innerText = razones[currentReasonIndex];
+                textElement.style.opacity = 1;
+            }, 300);
+        }
+
+        document.getElementById('password').addEventListener('input', function (e) {
+            let val = e.target.value.replace(/\D/g, '');
+            let formatted = '';
+            if (val.length > 0) {
+                formatted += val.substring(0, 2);
+                if (val.length > 2) {
+                    formatted += '/' + val.substring(2, 4);
+                    if (val.length > 4) formatted += '/' + val.substring(4, 8);
+                }
+            }
+            e.target.value = formatted;
+            if (val.length === 8) checkPassword(val);
+        });
+
+        function checkPassword(valorLimpio) {
+            console.log("Intentando acceso con:", valorLimpio);
+            if (valorLimpio === CLAVE_CORRECTA || valorLimpio === CLAVE_ADMIN) {
+                isAdmin = (valorLimpio === CLAVE_ADMIN);
+                
+                document.getElementById('lock-screen').style.opacity = '0';
+
+                // Si es admin, mostrar panel de control con prioridad máxima
+                if (isAdmin) {
+                    const panel = document.getElementById('admin-panel');
+                    panel.style.display = 'block';
+                    panel.style.zIndex = '999999';
+                    panel.style.opacity = '1';
+                    loadAdminMessages();
+                }
+
+                setTimeout(() => {
+                    document.getElementById('lock-screen').style.display = 'none';
+                    document.getElementById('main-content').style.display = 'block';
+                    startFlowerRain();
+                    loadJournal();
+                    loadGallery();
+                    loadWishlist();
+                    initCapsule();
+                    updateCounter();
+                    setInterval(updateCounter, 1000);
+                }, 500);
+            } else {
+                console.log("Clave incorrecta");
+                const err = document.getElementById('error-msg');
+                err.style.opacity = '1';
+                setTimeout(() => { err.style.opacity = '0'; document.getElementById('password').value = ''; }, 1500);
+            }
+        }
+
+        function updateCounter() {
+            const now = new Date();
+            const diff = now - FECHA_INICIO;
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const m = Math.floor((diff / 1000 / 60) % 60);
+            const s = Math.floor((diff / 1000) % 60);
+            document.getElementById('counter').innerHTML = `${d}d ${String(h).padStart(2, '0')}h ${String(m).padStart(2, '0')}m <span class="text-pink-400 animate-pulse">${String(s).padStart(2, '0')}s</span>`;
+        }
+
+        const FECHA_INICIO = new Date("2022-11-09T00:00:00");
+
+        function unlockGallery() {
+            document.getElementById('unlockGalleryBtn').style.display = 'none';
+            const gc = document.getElementById('galleryContainer');
+            gc.classList.remove('hidden');
+            setTimeout(() => gc.classList.add('opacity-100', 'translate-y-0'), 100);
+            loadGallery();
+        }
+
+        async function loadGallery() {
+            try {
+                const response = await fetch('/api/gallery');
+                const items = await response.json();
+                const grid = document.getElementById('photo-grid-api');
+                grid.innerHTML = items.map((item, index) => `
+                    <div class="photo-frame group relative">
+                        ${isAdmin ? `<button onclick="adminDeleteGallery(${item.id}, event)" class="absolute top-2 right-2 bg-red-600 text-white w-8 h-8 rounded-full z-50 opacity-0 group-hover:opacity-100 transition-all shadow-lg flex items-center justify-center text-xs">✕</button>` : ''}
+                        ${item.type === 'video' ? 
+                            `<video src="${item.src}" class="w-full h-full object-cover aspect-square rounded-sm" controls></video>` :
+                            `<img src="${item.src}" class="w-full h-full object-cover aspect-square rounded-sm">`
+                        }
+                        <div class="mt-6 text-center">
+                            <p class="romantic-font text-2xl text-gray-600 italic">Momento #${index + 1}</p>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (err) {
+                console.error("Error cargando galería:", err);
+            }
+        }
+
+        // --- ADMIN FUNCTIONS ---
+        async function adminDeleteGallery(id, event) {
+            if (event) event.stopPropagation();
+            if (!confirm("¿Seguro que quieres borrar este recuerdo? 📸")) return;
+            try {
+                const res = await fetch(`/api/gallery/${id}`, { method: 'DELETE' });
+                if (res.ok) loadGallery();
+            } catch (err) { console.error(err); }
+        }
+
+        async function adminDeleteJournal(id) {
+            if (!confirm("¿Seguro que quieres borrar este hito? 🥀")) return;
+            try {
+                const res = await fetch(`/api/journal/${id}`, { method: 'DELETE' });
+                if (res.ok) loadJournal();
+            } catch (err) { console.error(err); }
+        }
+
+        async function uploadFile(file) {
+            const formData = new FormData();
+            formData.append('file', file);
+            const res = await fetch('/api/upload', {
+                method: 'POST',
+                body: formData
+            });
+            const data = await res.json();
+            if (data.error) throw new Error(data.error);
+            return data.url;
+        }
+
+        function updateFileName(type) {
+            const input = document.getElementById(`admin-${type}-file`);
+            const label = document.getElementById(`label-${type}-file`);
+            if (input.files.length > 0) {
+                label.innerText = '✅ ' + input.files[0].name;
+            } else {
+                label.innerText = '📁 Seleccionar';
+            }
+        }
+
+        async function adminAddJournal() {
+            const text = document.getElementById('admin-journal-text').value;
+            const type = document.getElementById('admin-journal-type').value;
+            let attachment = document.getElementById('admin-journal-attachment').value;
+            const fileInput = document.getElementById('admin-journal-file');
+            
+            if (!text) return;
+            try {
+                if (fileInput.files.length > 0) attachment = await uploadFile(fileInput.files[0]);
+                await fetch('/api/journal', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text, type, attachment })
+                });
+                document.getElementById('admin-journal-text').value = '';
+                document.getElementById('admin-journal-file').value = '';
+                document.getElementById('label-journal-file').innerText = '📁 Seleccionar';
+                loadJournal();
+                alert("Hito publicado ✨");
+            } catch (err) { alert("Error al publicar"); }
+        }
+
+        async function adminAddGallery() {
+            let src = document.getElementById('admin-gallery-src').value;
+            const type = document.getElementById('admin-gallery-type').value;
+            const fileInput = document.getElementById('admin-gallery-file');
+            try {
+                if (fileInput.files.length > 0) src = await uploadFile(fileInput.files[fileInput.files.length - 1]);
+                if (!src) return;
+                await fetch('/api/gallery', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ src, type })
+                });
+                document.getElementById('admin-gallery-src').value = '';
+                document.getElementById('admin-gallery-file').value = '';
+                document.getElementById('label-gallery-file').innerText = '📁 Seleccionar';
+                loadGallery();
+                alert("Recuerdo añadido 📸");
+            } catch (err) { alert("Error al subir recuerdo"); }
+        }
+
+        async function adminAddWish() {
+            const text = document.getElementById('admin-wish-text').value;
+            if (!text) return;
+            try {
+                const res = await fetch('/api/wishlist', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text })
+                });
+                if (res.ok) {
+                    document.getElementById('admin-wish-text').value = '';
+                    await loadWishlist();
+                    alert("¡Deseo guardado mi amor! ✨");
+                } else {
+                    alert("Hubo un problema al guardar el deseo.");
+                }
+            } catch (err) {
+                console.error("Error wishlist:", err);
+                alert("Error de conexión al guardar el deseo.");
+            }
+        }
+
+        async function adminToggleWish(id, currentStatus) {
+            await fetch(`/api/wishlist/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ completed: !currentStatus })
+            });
+            loadWishlist();
+        }
+
+        async function adminDeleteWish(id) {
+            if (!confirm("¿Borrar deseo?")) return;
+            await fetch(`/api/wishlist/${id}`, { method: 'DELETE' });
+            loadWishlist();
+        }
+
+        async function adminUpdateSong() {
+            const songId = document.getElementById('admin-song-id').value;
+            if (!songId) return;
+            await fetch('/api/config', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ songId })
+            });
+            alert("Música actualizada (Recarga para aplicar)");
+        }
+
+        async function loadAdminMessages() {
+            try {
+                const res = await fetch('/api/messages');
+                const messages = await res.json();
+                const list = document.getElementById('admin-messages-list');
+                list.innerHTML = messages.map(m => `
+                    <div class="bg-white/5 p-2 rounded-lg border border-white/5 mb-2">
+                        <p class="text-[8px] text-gray-500">${m.date}</p>
+                        <p class="text-xs text-silver">${m.message}</p>
+                    </div>
+                `).join('') || '<p class="text-center text-xs text-gray-600 italic">Sin mensajes</p>';
+            } catch (err) { console.error(err); }
+        }
+
+        // DIARIO DE CAMBIO - API REAL
+        async function loadJournal() {
+            try {
+                const response = await fetch('/api/journal');
+                const journalEntries = await response.json();
+                
+                // Actualizar Dashboard
+                updateDashboard(journalEntries);
+
+                const feed = document.getElementById('journal-feed');
+                feed.innerHTML = journalEntries.map(entry => {
+                    let mediaHTML = '';
+                    if (entry.attachment) {
+                        if (entry.type === 'image') {
+                            mediaHTML = `<img src="${entry.attachment}" class="w-full rounded-2xl mt-4 border border-white/10">`;
+                        } else if (entry.type === 'video') {
+                            mediaHTML = `<video src="${entry.attachment}" controls class="w-full rounded-2xl mt-4 border border-white/10"></video>`;
+                        } else if (entry.type === 'audio') {
+                            mediaHTML = `<audio src="${entry.attachment}" controls class="w-full mt-4"></audio>`;
+                        } else if (entry.type === 'pdf') {
+                            mediaHTML = `<a href="${entry.attachment}" target="_blank" class="flex items-center gap-3 bg-red-900/20 p-4 rounded-xl mt-4 border border-red-900/40 text-silver hover:bg-red-900/40 transition-all">
+                                <span>📄</span> Ver documento PDF
+                            </a>`;
+                        }
+                    }
+
+                    return `
+                        <div class="journal-entry group relative reveal">
+                            ${isAdmin ? `<button onclick="adminDeleteJournal(${entry.id})" class="absolute top-4 right-4 text-red-500 opacity-0 group-hover:opacity-100 transition-all text-sm font-bold hover:text-red-400">BORRAR ×</button>` : ''}
+                            <div class="journal-date">${entry.date}</div>
+                            <p class="text-silver/80 text-lg leading-relaxed">${entry.text}</p>
+                            ${mediaHTML}
+                        </div>
+                    `;
+                }).join('');
+
+                // Re-inicializar animaciones Reveal
+                initReveal();
+            } catch (err) {
+                console.error("Error cargando el diario:", err);
+            }
+        }
+
+        function updateDashboard(entries) {
+            const milestoneCount = entries.length;
+            const FECHA_PLAN = new Date("2022-11-09");
+            const daysCount = Math.floor((new Date() - FECHA_PLAN) / (1000 * 60 * 60 * 24));
+            
+            document.getElementById('stat-days').innerText = daysCount;
+            document.getElementById('stat-milestones').innerText = milestoneCount;
+            
+            // Lógica de porcentaje (ficticia para visualización: 10% por cada 5 hitos, base 60%)
+            let dedication = 60 + (milestoneCount * 2);
+            if (dedication > 100) dedication = 100;
+            
+            document.getElementById('stat-dedication-percent').innerText = dedication + '%';
+            document.getElementById('effort-bar').style.width = dedication + '%';
+        }
+
+        function initReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            reveals.forEach(r => observer.observe(r));
+        }
+
+        // BUZÓN DE ESCUCHA - API REAL
+        async function submitToMailbox() {
+            const input = document.getElementById('mailbox-input');
+            const success = document.getElementById('mailbox-success');
+            
+            if (input.value.trim() === "") return;
+            
+            try {
+                input.disabled = true;
+                input.style.opacity = "0.5";
+                
+                const response = await fetch('/api/mailbox', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: input.value })
+                });
+
+                if (response.ok) {
+                    input.value = "";
+                    success.style.display = "block";
+                    setTimeout(() => {
+                        success.style.display = "none";
+                        input.disabled = false;
+                        input.style.opacity = "1";
+                    }, 5000);
+                }
+            } catch (err) {
+                console.error("Error enviando mensaje:", err);
+                input.disabled = false;
+                input.style.opacity = "1";
+            }
+        }
+
+
+        // MODO AMANECER
+        let isDawnMode = false;
+        function toggleDawnMode() {
+            isDawnMode = !isDawnMode;
+            document.body.classList.toggle('dawn-mode');
+            const btn = document.getElementById('dawn-btn');
+            btn.innerHTML = isDawnMode ? '🌃' : '🌅';
+            
+            // Actualizar colores de las estrellas si es necesario
+            if (isDawnMode) {
+                stars.forEach(s => s.color = 'rgba(93, 64, 55, 0.4)');
+            } else {
+                stars.forEach(s => s.color = 'rgba(226, 232, 240, 0.8)');
+            }
+        }
+
+        // CÁPSULA DEL TIEMPO LOGIC
+        let capsuleTargetDate;
+        let capsuleSecretMessage;
+
+        async function initCapsule() {
+            try {
+                const res = await fetch('/api/config');
+                const config = await res.json();
+                capsuleTargetDate = new Date(config.capsuleDate);
+                capsuleSecretMessage = config.capsuleMessage;
+                
+                // Pre-llenar campos admin
+                if (isAdmin) {
+                    document.getElementById('admin-capsule-date').value = config.capsuleDate.substring(0, 16);
+                    document.getElementById('admin-capsule-message').value = config.capsuleMessage;
+                }
+                
+                updateCapsuleTimer();
+                setInterval(updateCapsuleTimer, 1000);
+            } catch (err) { console.error("Error init capsule:", err); }
+        }
+
+        function updateCapsuleTimer() {
+            const now = new Date().getTime();
+            const dist = capsuleTargetDate.getTime() - now;
+
+            if (dist < 0) {
+                document.getElementById('capsule-locked').classList.add('hidden');
+                document.getElementById('capsule-unlocked').classList.remove('hidden');
+                document.getElementById('capsule-content').innerText = capsuleSecretMessage;
+                return;
+            }
+
+            const days = Math.floor(dist / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((dist % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = days.toString().padStart(2, '0');
+            document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+        }
+
+        async function adminUpdateCapsule() {
+            const capsuleDate = document.getElementById('admin-capsule-date').value;
+            const capsuleMessage = document.getElementById('admin-capsule-message').value;
+            if (!capsuleDate || !capsuleMessage) return;
+            
+            await fetch('/api/config', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ capsuleDate, capsuleMessage })
+            });
+            alert("Cápsula programada correctamente ⏳");
+            initCapsule();
+        }
+
+        // CIELO ESTRELLADO REACTIVO
+        const canvas = document.getElementById('star-canvas');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+        let mouse = { x: -1000, y: -1000 };
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initStars();
+        }
+
+        function initStars() {
+            stars = [];
+            const count = (window.innerWidth * window.innerHeight) / 3000;
+            for (let i = 0; i < count; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 1.5,
+                    speed: Math.random() * 0.05,
+                    opacity: Math.random(),
+                    pulse: Math.random() * 0.05,
+                    color: null
+                });
+            }
+        }
+
+        function drawStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(s => {
+                s.opacity += s.pulse;
+                if (s.opacity > 1 || s.opacity < 0.2) s.pulse = -s.pulse;
+
+                ctx.fillStyle = s.color || `rgba(226, 232, 240, ${s.opacity})`;
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Interacción mouse
+                const dx = s.x - mouse.x;
+                const dy = s.y - mouse.y;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+                if (dist < 150) {
+                    ctx.strokeStyle = `rgba(153, 27, 27, ${1 - dist/150})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.beginPath();
+                    ctx.moveTo(s.x, s.y);
+                    ctx.lineTo(mouse.x, mouse.y);
+                    ctx.stroke();
+                }
+            });
+            requestAnimationFrame(drawStars);
+        }
+
+        window.addEventListener('resize', resize);
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+
+            // Actualizar variables CSS para el dashboard Glassmorphism
+            document.querySelectorAll('.stat-card').forEach(card => {
+                const rect = card.getBoundingClientRect();
+                card.style.setProperty('--mouseX', `${e.clientX - rect.left}px`);
+                card.style.setProperty('--mouseY', `${e.clientY - rect.top}px`);
+            });
+        });
+        resize();
+        drawStars();
+        // EFECTO MÁQUINA DE ESCRIBIR
+        const letterContent = {
+            line1: "Edith, he tenido tiempo para reflexionar y entiendo que tenías razón. Me pediste cambios que no escuché a tiempo, y hoy entiendo que mi descuido te agotó. Me dolió ver que la distancia y la presencia de alguien más son el resultado de mi falta de atención.",
+            line2: "No estoy aquí para presionarte, sino para demostrarte que entendí lo que vales. He estado trabajando en mi imagen, en mi actitud y en ser el hombre detallista que siempre mereciste. Este proyecto es solo un reflejo de que mi cambio ya no es por miedo a perderte, sino porque quiero ser mejor.",
+            quote: "\"Mi intención es recuperarte y demostrarte que la versión de mi que siempre quisiste ya es una realidad.\""
+        };
+
+        const typeWriter = async (elementId, text, speed = 50) => {
+            const element = document.getElementById(elementId);
+            element.classList.add('typing-cursor');
+            element.style.background = "linear-gradient(45deg, #d4af37, #fdf6e3, #d4af37)";
+            element.style.webkitBackgroundClip = "text";
+            element.style.webkitTextFillColor = "transparent";
+            element.style.textShadow = "0 0 10px rgba(212, 175, 55, 0.2)";
+            
+            for (let i = 0; i < text.length; i++) {
+                element.innerHTML += text.charAt(i);
+                await new Promise(r => setTimeout(r, speed));
+            }
+            element.classList.remove('typing-cursor');
+        };
+
+        const startTyping = async () => {
+            await typeWriter('line1', letterContent.line1, 100);
+            await new Promise(r => setTimeout(r, 500));
+            await typeWriter('line2', letterContent.line2, 40);
+
+            // Mostrar la cita final suavemente
+            setTimeout(() => {
+                const quote = document.getElementById('quote-line');
+                quote.innerHTML = letterContent.quote;
+                quote.classList.remove('opacity-0', 'translate-y-4');
+            }, 500);
+        };
+
+        // Observer para iniciar la escritura cuando sea visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startTyping();
+                    observer.disconnect();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(document.getElementById('letter-container'));
+
+        // EFECTO RASTRO DE CORAZONES
+        function createHeart(x, y) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-trail');
+            heart.innerHTML = '❤️';
+            heart.style.left = x + 'px';
+            heart.style.top = y + 'px';
+
+            // Variación aleatoria
+            const randomSize = Math.random() * 20 + 10;
+            heart.style.fontSize = randomSize + 'px';
+            heart.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 1000);
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.8) createHeart(e.clientX, e.clientY);
+        });
+
+        document.addEventListener('touchmove', (e) => {
+            const touch = e.touches[0];
+            if (Math.random() > 0.8) createHeart(touch.clientX, touch.clientY);
+        });
+
+        function startFlowerRain() { setInterval(createFlower, 400); }
+
+        // PARALLAX EFFECT & MUSIC FADE LOGIC
+        window.addEventListener('scroll', () => {
+            if (document.getElementById('main-content').style.display === 'none') return;
+
+            // Music Fade Logic
+            if (player && player.setVolume) {
+                const gallery = document.getElementById('galleryContainer');
+                const galleryTop = gallery.getBoundingClientRect().top + window.scrollY;
+                const scrollPos = window.scrollY;
+                const windowHeight = window.innerHeight;
+                
+                // Start fade from top, reach 100% at gallery
+                let volume = (scrollPos / (galleryTop - windowHeight)) * 100;
+                volume = Math.min(Math.max(volume, 0), 100);
+                player.setVolume(volume);
+            }
+
+            if (document.getElementById('galleryContainer').classList.contains('hidden')) return;
+
+            // Parallax for gallery images
+            document.querySelectorAll('.photo-frame img').forEach((img) => {
+                const rect = img.parentElement.getBoundingClientRect();
+                const viewHeight = window.innerHeight;
+                
+                // Only animate if element is in view
+                if (rect.top < viewHeight && rect.bottom > 0) {
+                    const centerOffset = (rect.top + rect.height / 2) - (viewHeight / 2);
+                    const speed = 0.08;
+                    img.style.transform = `translateY(${centerOffset * speed}px) scale(1.15)`;
+                }
+            });
+
+            // Parallax for foreground roses
+            document.querySelectorAll('.parallax-rose').forEach((rose) => {
+                const speed = parseFloat(rose.getAttribute('data-speed')) || 0.2;
+                const rect = document.getElementById('galleryContainer').getBoundingClientRect();
+                const offset = rect.top;
+                rose.style.transform = `translateY(${offset * speed}px) rotate(${offset * 0.05}deg)`;
+            });
+        });
+
+        // WISHLIST LOGIC
+        async function loadWishlist() {
+            try {
+                const res = await fetch('/api/wishlist');
+                const items = await res.json();
+                const container = document.getElementById('wishlist-container');
+                container.innerHTML = items.map(item => `
+                    <div class="wishlist-card ${item.completed ? 'completed' : ''} reveal">
+                        <div class="wishlist-check" onclick="${isAdmin ? `adminToggleWish(${item.id}, ${item.completed})` : ''}">
+                            ${item.completed ? '✓' : ''}
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-silver font-medium ${item.completed ? 'line-through opacity-50' : ''}">${item.text}</p>
+                        </div>
+                        ${isAdmin ? `<button onclick="adminDeleteWish(${item.id})" class="text-red-500 text-xs hover:text-red-400">✕</button>` : ''}
+                    </div>
+                `).join('');
+                initReveal();
+            } catch (err) {
+                console.error("Error wishlist:", err);
+            }
+        }
+
+    </script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+</body>
+
+</html>
