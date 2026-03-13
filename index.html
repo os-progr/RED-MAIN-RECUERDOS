@@ -1311,7 +1311,14 @@
                 document.getElementById('label-journal-file').innerText = '📁 Seleccionar';
                 loadJournal();
                 alert("Hito publicado ✨");
-            } catch (err) { alert("Error al publicar: " + err.message); }
+            } catch (err) { 
+                console.error("Error en Journal:", err);
+                if (err.message.includes("Cloud Firestore API has not been used")) {
+                    alert("⚠️ Error: Debes entrar a tu Consola de Firebase y hacer clic en 'Crear base de datos' en la sección Firestore Database.");
+                } else {
+                    alert("Error al publicar: " + err.message); 
+                }
+            }
         }
 
         async function adminAddGallery() {
@@ -1331,7 +1338,14 @@
                 document.getElementById('label-gallery-file').innerText = '📁 Seleccionar';
                 loadGallery();
                 alert("Recuerdo añadido 📸");
-            } catch (err) { alert("Error al subir recuerdo: " + err.message); }
+            } catch (err) { 
+                console.error("Error en Galería:", err);
+                if (err.message.includes("Cloud Firestore API has not been used")) {
+                    alert("⚠️ Error: Debes entrar a tu Consola de Firebase y hacer clic en 'Crear base de datos' en la sección Firestore Database.");
+                } else {
+                    alert("Error al subir recuerdo: " + err.message); 
+                }
+            }
         }
 
         async function adminAddWish() {
@@ -1348,7 +1362,11 @@
                 alert("¡Deseo guardado mi amor! ✨");
             } catch (err) {
                 console.error("Error wishlist:", err);
-                alert("Error de conexión al guardar el deseo.");
+                if (err.message.includes("Cloud Firestore API has not been used")) {
+                    alert("⚠️ Error: Debes crear la base de datos en tu Consola de Firebase.");
+                } else {
+                    alert("Error de conexión al guardar el deseo.");
+                }
             }
         }
 
