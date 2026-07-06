@@ -819,13 +819,73 @@
                     
                     <p class="mb-6 text-center italic text-xl mt-12 text-[#d4af37]">Deseo con toda la fuerza de mi alma que encuentres la mayor de las felicidades. Que el universo te llene de bendiciones, que alcances cada uno de esos sueños de los que tanto me hablabas, y que la vida te trate siempre tan bonito... como tú trataste a mi corazón.</p>
                     
-                    <p class="text-right mt-12 font-bold text-gray-400">Siempre tuyo en el recuerdo,</p>
-                    <p class="text-right text-sm text-gray-500">Juan David</p>
+                    
+                    <div class="mt-12 p-6 border border-white/10 rounded-2xl bg-white/5">
+                        <p class="font-bold text-[#d4af37] mb-4 text-xl">Lo que me llevo de ti:</p>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-300">
+                            <li>Me llevo tu forma tan bonita e inocente de ver la vida.</li>
+                            <li>Me llevo la inmensa paciencia que me enseñaste cuando yo no sabía cómo avanzar.</li>
+                            <li>Me llevo la certeza absoluta de que, gracias a ti, sé lo que es amar de verdad.</li>
+                        </ul>
+                    </div>
+
+                    <p class="text-right mt-12 font-bold text-gray-400">Hasta que la vida nos vuelva a cruzar...</p>
+                    <p class="text-right text-xl text-[#d4af37] mt-2 font-serif italic">Juan David</p>
+                    
+                    <div class="mt-16 text-center border-t border-white/10 pt-10">
+                        <p class="text-sm text-gray-500 mb-4">La puerta nunca se cierra por completo.</p>
+                        <a href="https://wa.me/?text=Hola" target="_blank" class="inline-block border border-white/20 text-gray-300 hover:text-white hover:bg-white/10 px-8 py-3 rounded-full text-sm transition-all duration-300 uppercase tracking-widest font-bold">Si algún día quieres hablar...</a>
+                    </div>
+
 
                 </div>
 
                 <!-- Page decorations -->
                 <div class="absolute bottom-6 right-8 text-red-900/40 text-4xl font-serif italic opacity-50">~ Fin ~</div>
+            </div>
+        </section>
+
+        
+        <!-- SECCIÓN: Cápsula del Tiempo -->
+        <section class="max-w-4xl mx-auto px-6 py-24 reveal">
+            <div class="glass p-12 rounded-[4rem] text-center border border-white/10 shadow-2xl relative overflow-hidden">
+                <div class="absolute -top-24 -right-24 w-64 h-64 bg-[#d4af37]/5 rounded-full blur-3xl"></div>
+                
+                <h3 class="romantic-font text-4xl text-[#d4af37] mb-4">Un Mensaje para el Mañana</h3>
+                <p class="text-gray-400 mb-10 italic">"Hay respuestas que solo el tiempo puede darnos. Dejé este mensaje cerrado para el futuro. Si para entonces nuestros caminos coinciden, lo leeremos juntos."</p>
+                
+                <div id="capsule-locked" class="transition-all duration-500">
+                    <div class="flex justify-center gap-4 mb-8">
+                        <div class="text-center">
+                            <div id="capsule-days" class="text-5xl font-light text-silver mb-2">00</div>
+                            <div class="text-xs text-gray-500 uppercase tracking-widest">Días</div>
+                        </div>
+                        <div class="text-4xl text-gray-600 font-light">:</div>
+                        <div class="text-center">
+                            <div id="capsule-hours" class="text-5xl font-light text-silver mb-2">00</div>
+                            <div class="text-xs text-gray-500 uppercase tracking-widest">Hrs</div>
+                        </div>
+                        <div class="text-4xl text-gray-600 font-light">:</div>
+                        <div class="text-center">
+                            <div id="capsule-minutes" class="text-5xl font-light text-silver mb-2">00</div>
+                            <div class="text-xs text-gray-500 uppercase tracking-widest">Min</div>
+                        </div>
+                        <div class="text-4xl text-gray-600 font-light">:</div>
+                        <div class="text-center">
+                            <div id="capsule-seconds" class="text-5xl font-light text-[#d4af37] mb-2 animate-pulse">00</div>
+                            <div class="text-xs text-gray-500 uppercase tracking-widest">Seg</div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span class="text-6xl mb-6 opacity-20">🔒</span>
+                        <p class="text-gray-500 font-bold tracking-widest uppercase text-xs">Cápsula Sellada hasta 2027</p>
+                    </div>
+                </div>
+
+                <div id="capsule-unlocked" class="hidden transition-all duration-1000 opacity-0 transform translate-y-4">
+                    <span class="text-6xl mb-6 block text-[#d4af37]">✨</span>
+                    <p id="capsule-content" class="text-xl text-gray-200 italic leading-relaxed max-w-2xl mx-auto"></p>
+                </div>
             </div>
         </section>
 
@@ -864,6 +924,7 @@
                     document.getElementById('lock-screen').style.display = 'none';
                     document.getElementById('main-content').style.display = 'block';
                     startFlowerRain();
+                    initTimeCapsule();
 
                     updateCounter();
                     setInterval(updateCounter, 1000);
@@ -977,6 +1038,51 @@
         });
         resize();
         drawStars();
+
+        
+        // CÁPSULA DEL TIEMPO 
+        const TARGET_DATE = new Date("2027-07-05T00:00:00");
+        const SECRET_MSG = "¡Hola de nuevo! Si estás leyendo esto, significa que el tiempo pasó, que sanamos, y que la vida nos dio la oportunidad de volver a encontrarnos. No importa qué haya pasado entre nosotros en este año de distancia, quiero que sepas que mi cariño por ti nunca se apagó. Brindo por los nuevos comienzos, sean de la forma que sean.";
+
+        function initTimeCapsule() {
+            updateCapsule();
+            setInterval(updateCapsule, 1000);
+        }
+
+        function updateCapsule() {
+            const now = new Date().getTime();
+            const dist = TARGET_DATE.getTime() - now;
+
+            if (dist < 0) {
+                const locked = document.getElementById('capsule-locked');
+                const unlocked = document.getElementById('capsule-unlocked');
+                if(locked && !locked.classList.contains('hidden')) {
+                    locked.classList.add('hidden');
+                    unlocked.classList.remove('hidden');
+                    setTimeout(() => {
+                        unlocked.classList.remove('opacity-0', 'translate-y-4');
+                    }, 100);
+                    document.getElementById('capsule-content').innerText = SECRET_MSG;
+                }
+                return;
+            }
+
+            const d = Math.floor(dist / (1000 * 60 * 60 * 24));
+            const h = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((dist % (1000 * 60)) / 1000);
+
+            const dEl = document.getElementById('capsule-days');
+            if(dEl) {
+                dEl.innerText = d.toString().padStart(2, '0');
+                document.getElementById('capsule-hours').innerText = h.toString().padStart(2, '0');
+                document.getElementById('capsule-minutes').innerText = m.toString().padStart(2, '0');
+                document.getElementById('capsule-seconds').innerText = s.toString().padStart(2, '0');
+            }
+        }
+        
+        // Iniciar la cápsula cuando la pantalla de bloqueo desaparece
+
 
         // EFECTO MÁQUINA DE ESCRIBIR
         const letterContent = {
