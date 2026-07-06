@@ -1523,38 +1523,6 @@
             reveals.forEach(r => observer.observe(r));
         }
 
-        // BUZÓN DE ESCUCHA - API REAL
-        async function submitToMailbox() {
-            const input = document.getElementById('mailbox-input');
-            const success = document.getElementById('mailbox-success');
-            
-            if (input.value.trim() === "") return;
-            
-            try {
-                input.disabled = true;
-                input.style.opacity = "0.5";
-                
-                const response = await fetch('/api/mailbox', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: input.value })
-                });
-
-                if (response.ok) {
-                    input.value = "";
-                    success.style.display = "block";
-                    setTimeout(() => {
-                        success.style.display = "none";
-                        input.disabled = false;
-                        input.style.opacity = "1";
-                    }, 5000);
-                }
-            } catch (err) {
-                console.error("Error enviando mensaje:", err);
-                input.disabled = false;
-                input.style.opacity = "1";
-            }
-        }
 
 
         // MODO AMANECER
@@ -1818,28 +1786,7 @@
             });
         });
 
-        // WISHLIST LOGIC
-        async function loadWishlist() {
-            try {
-                const res = await fetch('/api/wishlist');
-                const items = await res.json();
-                const container = document.getElementById('wishlist-container');
-                container.innerHTML = items.map(item => `
-                    <div class="wishlist-card ${item.completed ? 'completed' : ''} reveal">
-                        <div class="wishlist-check" onclick="${isAdmin ? `adminToggleWish(${item.id}, ${item.completed})` : ''}">
-                            ${item.completed ? '✓' : ''}
-                        </div>
-                        <div class="flex-1">
-                            <p class="text-silver font-medium ${item.completed ? 'line-through opacity-50' : ''}">${item.text}</p>
-                        </div>
-                        ${isAdmin ? `<button onclick="adminDeleteWish(${item.id})" class="text-red-500 text-xs hover:text-red-400">✕</button>` : ''}
-                    </div>
-                `).join('');
-                initReveal();
-            } catch (err) {
-                console.error("Error wishlist:", err);
-            }
-        }
+
 
     </script>
     <script src="https://www.youtube.com/iframe_api"></script>
