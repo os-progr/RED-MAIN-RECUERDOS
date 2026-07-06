@@ -155,7 +155,7 @@
             color: #4a342e;
         }
 
-        .dawn-mode .romantic-font, .dawn-mode .text-silver, .dawn-mode .text-gray-400 {
+        .dawn-mode .romantic-font, .dawn-mode .text-black, .dawn-mode .text-gray-700 {
             color: #5d4037;
         }
 
@@ -194,7 +194,7 @@
         }
 
         .text-crimson { color: var(--crimson-light); }
-        .text-silver { color: var(--silver); }
+        .text-black { color: var(--silver); }
         .border-crimson { border-color: var(--crimson); }
 
         .input-love {
@@ -719,17 +719,17 @@
 
     <!-- PANTALLA DE BLOQUEO -->
     
-    <div id="lock-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-black p-6 text-center">
-        <div class="glass p-10 rounded-[2.5rem] shadow-2xl max-w-md w-full border-2 border-white/10">
+    <div id="lock-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-white p-6 text-center">
+        <div class="glass p-10 rounded-[2.5rem] shadow-2xl max-w-md w-full border-2 border-black/10">
             <div class="mb-6 inline-block p-4 bg-red-950/50 rounded-full animate-bounce">
                 <span class="text-3xl">🥀</span>
             </div>
-            <h1 class="romantic-font text-5xl text-silver mb-6">Para ti...</h1>
-            <p class="text-gray-400 mb-8 font-medium">Nuestra fecha siempre será un recuerdo hermoso (DD/MM/AAAA):</p>
+            <h1 class="romantic-font text-5xl text-black mb-6">Para ti...</h1>
+            <p class="text-gray-700 mb-8 font-medium">Nuestra fecha siempre será un recuerdo hermoso (DD/MM/AAAA):</p>
 
             <div class="relative max-w-xs mx-auto">
                 <input type="text" id="password" maxlength="10" placeholder="DD/MM/AAAA"
-                    class="input-love w-full p-5 rounded-3xl border-2 border-zinc-800 focus:border-red-900 outline-none text-center text-3xl mb-4 text-red-600 font-bold bg-black/40">
+                    class="input-love w-full p-5 rounded-3xl border-2 border-zinc-800 focus:border-red-900 outline-none text-center text-3xl mb-4 text-red-600 font-bold bg-white/40">
             </div>
 
             <p id="error-msg" class="text-red-500 mt-4 text-sm opacity-0 transition-opacity duration-300">Esa no es
@@ -747,13 +747,13 @@
                 <span class="text-7xl relative z-10 text-crimson">🥀</span>
             </div>
 
-            <h1 class="romantic-font text-7xl md:text-9xl text-silver mb-6 drop-shadow-lg">Para Edith</h1>
-            <p class="text-xl md:text-3xl text-gray-400 max-w-2xl italic font-light">"Desde aquel 09 de noviembre de
+            <h1 class="romantic-font text-7xl md:text-9xl text-black mb-6 drop-shadow-lg">Para Edith</h1>
+            <p class="text-xl md:text-3xl text-gray-700 max-w-2xl italic font-light">"Desde aquel 09 de noviembre de
                 2022, mi mundo es un lugar mejor gracias a ti."</p>
 
-            <div class="mt-12 glass px-10 py-8 rounded-[3rem] shadow-xl border border-white/5">
+            <div class="mt-12 glass px-10 py-8 rounded-[3rem] shadow-xl border border-black/5">
                 <p class="text-red-800 font-bold mb-3 uppercase tracking-widest text-sm">Nuestro tiempo juntos:</p>
-                <div id="counter" class="text-3xl md:text-5xl text-silver font-light tracking-tight"></div>
+                <div id="counter" class="text-3xl md:text-5xl text-black font-light tracking-tight"></div>
             </div>
 
             <div class="absolute bottom-10 animate-bounce">
@@ -767,14 +767,14 @@
         <!-- Carta de Amor -->
         <section class="max-w-4xl mx-auto px-6 py-24 relative">
             <div
-                class="glass p-10 md:p-16 rounded-[3rem] shadow-2xl relative overflow-hidden border border-white/10 text-center">
-                <h2 class="romantic-font text-5xl text-silver mb-10 pb-4 border-b border-zinc-800">Para mi futura
+                class="glass p-10 md:p-16 rounded-[3rem] shadow-2xl relative overflow-hidden border border-black/10 text-center">
+                <h2 class="romantic-font text-5xl text-black mb-10 pb-4 border-b border-zinc-800">Para mi futura
                     prometida</h2>
-                <div class="space-y-8 text-gray-300 text-xl leading-relaxed font-light" id="letter-container">
+                <div class="space-y-8 text-gray-800 text-xl leading-relaxed font-light" id="letter-container">
                     <p id="line1" class="min-h-[2rem]"></p>
                     <p id="line2" class="min-h-[2rem]"></p>
                     <p id="quote-line"
-                        class="font-medium text-crimson italic bg-black/40 p-8 rounded-3xl border-l-8 border-red-900 shadow-sm opacity-0 transform translate-y-4 transition-all duration-700">
+                        class="font-medium text-crimson italic bg-white/40 p-8 rounded-3xl border-l-8 border-red-900 shadow-sm opacity-0 transform translate-y-4 transition-all duration-700">
                     </p>
                 </div>
             </div>
@@ -782,22 +782,22 @@
 
         <!-- BOTÓN MODO AMANECER (FLOTANTE IZQUIERDA) -->
         <button id="dawn-btn" onclick="toggleDawnMode()"
-            class="fixed bottom-6 left-6 z-50 bg-black/90 backdrop-blur-sm p-4 rounded-full shadow-2xl border-2 border-zinc-800 text-2xl hover:scale-110 transition-transform duration-300 text-silver">
+            class="fixed bottom-6 left-6 z-50 bg-white/90 backdrop-blur-sm p-4 rounded-full shadow-2xl border-2 border-zinc-800 text-2xl hover:scale-110 transition-transform duration-300 text-black">
             🌅
         </button>
 
         <!-- SECCIÓN: El Libro de Despedida -->
         <section class="max-w-5xl mx-auto px-6 py-24 reveal">
-            <h3 class="romantic-font text-center text-5xl text-silver mb-10">Nuestro Último Capítulo</h3>
+            <h3 class="romantic-font text-center text-5xl text-black mb-10">Nuestro Último Capítulo</h3>
             
             <!-- Book Container -->
-            <div class="relative w-full max-w-4xl mx-auto bg-[#1a1515] border-2 border-[#3d2b2b] rounded-r-3xl rounded-l-md shadow-2xl p-8 md:p-16 flex flex-col items-center">
+            <div class="relative w-full max-w-4xl mx-auto bg-white border-2 border-gray-300 rounded-r-3xl rounded-l-md shadow-2xl p-8 md:p-16 flex flex-col items-center">
                 
                 <!-- Book Binding / Spine effect -->
-                <div class="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#0a0505] to-[#1a1515] border-r border-[#3d2b2b] rounded-l-md shadow-[inset_-5px_0_15px_rgba(0,0,0,0.8)]"></div>
+                <div class="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-gray-200 to-white border-r border-gray-300 rounded-l-md shadow-[inset_-5px_0_15px_rgba(0,0,0,0.8)]"></div>
                 
                 <!-- Page Content -->
-                <div class="pl-6 w-full prose prose-invert prose-lg max-w-none text-gray-300 font-serif leading-relaxed" id="book-content" style="text-shadow: 0 1px 2px rgba(0,0,0,0.5);">
+                <div class="pl-6 w-full prose prose-invert prose-lg max-w-none text-gray-800 font-serif leading-relaxed" id="book-content" style="text-shadow: none;">
 
                     <h4 class="text-3xl text-center mb-8 text-[#d4af37] romantic-font">Para la mujer que me enseñó a amar...</h4>
                     
@@ -820,21 +820,21 @@
                     <p class="mb-6 text-center italic text-xl mt-12 text-[#d4af37]">Deseo con toda la fuerza de mi alma que encuentres la mayor de las felicidades. Que el universo te llene de bendiciones, que alcances cada uno de esos sueños de los que tanto me hablabas, y que la vida te trate siempre tan bonito... como tú trataste a mi corazón.</p>
                     
                     
-                    <div class="mt-12 p-6 border border-white/10 rounded-2xl bg-white/5">
+                    <div class="mt-12 p-6 border border-black/10 rounded-2xl bg-black/5">
                         <p class="font-bold text-[#d4af37] mb-4 text-xl">Lo que me llevo de ti:</p>
-                        <ul class="list-disc pl-5 space-y-2 text-gray-300">
+                        <ul class="list-disc pl-5 space-y-2 text-gray-800">
                             <li>Me llevo tu forma tan bonita e inocente de ver la vida.</li>
                             <li>Me llevo la inmensa paciencia que me enseñaste cuando yo no sabía cómo avanzar.</li>
                             <li>Me llevo la certeza absoluta de que, gracias a ti, sé lo que es amar de verdad.</li>
                         </ul>
                     </div>
 
-                    <p class="text-right mt-12 font-bold text-gray-400">Hasta que la vida nos vuelva a cruzar...</p>
+                    <p class="text-right mt-12 font-bold text-gray-700">Hasta que la vida nos vuelva a cruzar...</p>
                     <p class="text-right text-xl text-[#d4af37] mt-2 font-serif italic">Juan David</p>
                     
-                    <div class="mt-16 text-center border-t border-white/10 pt-10">
-                        <p class="text-sm text-gray-500 mb-4">La puerta nunca se cierra por completo.</p>
-                        <a href="https://wa.me/?text=Hola" target="_blank" class="inline-block border border-white/20 text-gray-300 hover:text-white hover:bg-white/10 px-8 py-3 rounded-full text-sm transition-all duration-300 uppercase tracking-widest font-bold">Si algún día quieres hablar...</a>
+                    <div class="mt-16 text-center border-t border-black/10 pt-10">
+                        <p class="text-sm text-gray-600 mb-4">La puerta nunca se cierra por completo.</p>
+                        <a href="https://wa.me/?text=Hola" target="_blank" class="inline-block border border-black/20 text-gray-800 hover:text-black hover:bg-white/10 px-8 py-3 rounded-full text-sm transition-all duration-300 uppercase tracking-widest font-bold">Si algún día quieres hablar...</a>
                     </div>
 
 
@@ -848,49 +848,49 @@
         
         <!-- SECCIÓN: Cápsula del Tiempo -->
         <section class="max-w-4xl mx-auto px-6 py-24 reveal">
-            <div class="glass p-12 rounded-[4rem] text-center border border-white/10 shadow-2xl relative overflow-hidden">
+            <div class="glass p-12 rounded-[4rem] text-center border border-black/10 shadow-2xl relative overflow-hidden">
                 <div class="absolute -top-24 -right-24 w-64 h-64 bg-[#d4af37]/5 rounded-full blur-3xl"></div>
                 
                 <h3 class="romantic-font text-4xl text-[#d4af37] mb-4">Un Mensaje para el Mañana</h3>
-                <p class="text-gray-400 mb-10 italic">"Hay respuestas que solo el tiempo puede darnos. Dejé este mensaje cerrado para el futuro. Si para entonces nuestros caminos coinciden, lo leeremos juntos."</p>
+                <p class="text-gray-700 mb-10 italic">"Hay respuestas que solo el tiempo puede darnos. Dejé este mensaje cerrado para el futuro. Si para entonces nuestros caminos coinciden, lo leeremos juntos."</p>
                 
                 <div id="capsule-locked" class="transition-all duration-500">
                     <div class="flex justify-center gap-4 mb-8">
                         <div class="text-center">
-                            <div id="capsule-days" class="text-5xl font-light text-silver mb-2">00</div>
-                            <div class="text-xs text-gray-500 uppercase tracking-widest">Días</div>
+                            <div id="capsule-days" class="text-5xl font-light text-black mb-2">00</div>
+                            <div class="text-xs text-gray-600 uppercase tracking-widest">Días</div>
                         </div>
                         <div class="text-4xl text-gray-600 font-light">:</div>
                         <div class="text-center">
-                            <div id="capsule-hours" class="text-5xl font-light text-silver mb-2">00</div>
-                            <div class="text-xs text-gray-500 uppercase tracking-widest">Hrs</div>
+                            <div id="capsule-hours" class="text-5xl font-light text-black mb-2">00</div>
+                            <div class="text-xs text-gray-600 uppercase tracking-widest">Hrs</div>
                         </div>
                         <div class="text-4xl text-gray-600 font-light">:</div>
                         <div class="text-center">
-                            <div id="capsule-minutes" class="text-5xl font-light text-silver mb-2">00</div>
-                            <div class="text-xs text-gray-500 uppercase tracking-widest">Min</div>
+                            <div id="capsule-minutes" class="text-5xl font-light text-black mb-2">00</div>
+                            <div class="text-xs text-gray-600 uppercase tracking-widest">Min</div>
                         </div>
                         <div class="text-4xl text-gray-600 font-light">:</div>
                         <div class="text-center">
                             <div id="capsule-seconds" class="text-5xl font-light text-[#d4af37] mb-2 animate-pulse">00</div>
-                            <div class="text-xs text-gray-500 uppercase tracking-widest">Seg</div>
+                            <div class="text-xs text-gray-600 uppercase tracking-widest">Seg</div>
                         </div>
                     </div>
                     <div class="flex flex-col items-center">
                         <span class="text-6xl mb-6 opacity-20">🔒</span>
-                        <p class="text-gray-500 font-bold tracking-widest uppercase text-xs">Cápsula Sellada hasta 2027</p>
+                        <p class="text-gray-600 font-bold tracking-widest uppercase text-xs">Cápsula Sellada hasta 2027</p>
                     </div>
                 </div>
 
                 <div id="capsule-unlocked" class="hidden transition-all duration-1000 opacity-0 transform translate-y-4">
                     <span class="text-6xl mb-6 block text-[#d4af37]">✨</span>
-                    <p id="capsule-content" class="text-xl text-gray-200 italic leading-relaxed max-w-2xl mx-auto"></p>
+                    <p id="capsule-content" class="text-xl text-gray-900 italic leading-relaxed max-w-2xl mx-auto"></p>
                 </div>
             </div>
         </section>
 
-        <footer class="text-center py-20 border-t border-white/5 mt-10">
-             <p class="text-gray-500 text-sm tracking-widest font-bold uppercase">Desde el 09 de Noviembre de 2022</p>
+        <footer class="text-center py-20 border-t border-black/5 mt-10">
+             <p class="text-gray-600 text-sm tracking-widest font-bold uppercase">Desde el 09 de Noviembre de 2022</p>
         </footer>
 
     </div>
@@ -965,7 +965,7 @@
             if (isDawnMode) {
                 stars.forEach(s => s.color = 'rgba(93, 64, 55, 0.4)');
             } else {
-                stars.forEach(s => s.color = 'rgba(226, 232, 240, 0.8)');
+                stars.forEach(s => s.color = 'rgba(0, 0, 0, 0.8)');
             }
         }
 
@@ -1005,7 +1005,7 @@
                 s.opacity += s.pulse;
                 if (s.opacity > 1 || s.opacity < 0.2) s.pulse = -s.pulse;
 
-                ctx.fillStyle = s.color || `rgba(226, 232, 240, ${s.opacity})`;
+                ctx.fillStyle = s.color || `rgba(0, 0, 0, ${s.opacity})`;
                 ctx.beginPath();
                 ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
                 ctx.fill();
