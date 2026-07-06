@@ -423,8 +423,6 @@
             object-fit: cover;
         }
 
-
-
         .animate-spin-slow {
             animation: spin 8s linear infinite;
         }
@@ -499,7 +497,6 @@
             overflow: hidden;
             color: var(--silver);
         }
-
 
         /* DASHBOARD SECTION 2.0 - ULTRA GLASS */
         .stat-card {
@@ -640,8 +637,6 @@
             pointer-events: none;
         }
 
-
-
         /* REVEAL ON SCROLL */
         .reveal {
             opacity: 0;
@@ -722,8 +717,6 @@
     <!-- CIELO ESTRELLADO DINÁMICO -->
     <canvas id="star-canvas"></canvas>
 
-    
-
     <!-- PANTALLA DE BLOQUEO -->
     
     <div id="lock-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-black p-6 text-center">
@@ -787,134 +780,12 @@
             </div>
         </section>
 
-
-
-
-        <!-- SECCIÓN: Lo que admiro de ti -->
-        <section class="max-w-6xl mx-auto px-6 py-24">
-            <h3 class="romantic-font text-center text-5xl text-silver mb-16">Lo que admiro de ti...</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="admiration-card text-center">
-                    <span class="text-4xl mb-4 block">✨</span>
-                    <h4 class="text-xl font-bold text-red-500 mb-2">Tu Fortaleza</h4>
-                    <p class="text-gray-400 text-sm">Admiro cómo enfrentas cada reto con una valentía que me inspira a ser mejor cada día.</p>
-                </div>
-                <div class="admiration-card text-center">
-                    <span class="text-4xl mb-4 block">🤍</span>
-                    <h4 class="text-xl font-bold text-red-500 mb-2">Tu Corazón</h4>
-                    <p class="text-gray-400 text-sm">Tienes la capacidad de perdonar y amar de una forma tan pura que me deja sin palabras.</p>
-                </div>
-                <div class="admiration-card text-center">
-                    <span class="text-4xl mb-4 block">💡</span>
-                    <h4 class="text-xl font-bold text-red-500 mb-2">Tu Inteligencia</h4>
-                    <p class="text-gray-400 text-sm">Me encanta cómo ves el mundo. Siempre tienes la palabra precisa y la visión correcta.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- DASHBOARD DE ESFUERZO -->
-        <section class="max-w-6xl mx-auto px-6 py-24 reveal">
-            <h3 class="romantic-font text-center text-5xl text-silver mb-4">Métricas de mi Compromiso</h3>
-            <p class="text-center text-gray-500 mb-16 italic">Visualizando mi esfuerzo real paso a paso</p>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <!-- Días -->
-                <div class="stat-card">
-                    <span id="stat-days" class="stat-value">0</span>
-                    <span class="stat-label">Días de Cambio</span>
-                </div>
-                <!-- Hitos -->
-                <div class="stat-card">
-                    <span id="stat-milestones" class="stat-value">0</span>
-                    <span class="stat-label">Hitos Logrados</span>
-                </div>
-                <!-- Nivel de Dedicación -->
-                <div class="stat-card col-span-2">
-                    <div class="flex justify-between items-end mb-2">
-                        <span class="stat-label">Nivel de Dedicación</span>
-                        <span id="stat-dedication-percent" class="text-rose-gold font-bold">0%</span>
-                    </div>
-                    <div class="effort-bar-container">
-                        <div id="effort-bar" class="effort-bar-fill"></div>
-                    </div>
-                    <p class="text-[10px] text-gray-500 mt-2 uppercase tracking-tighter">Creciendo cada día para nosotros</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECCIÓN: Diario de mi Cambio -->
-        <section class="max-w-4xl mx-auto px-6 py-24 bg-white/5 rounded-[4rem] border border-white/5">
-            <h3 class="romantic-font text-center text-5xl text-silver mb-6">Diario de mi Cambio</h3>
-            <p class="text-center text-gray-500 mb-16 italic">"No son palabras, son mis pasos reales hacia ti."</p>
-            
-            <div id="journal-feed" class="journal-container max-w-2xl mx-auto text-left relative">
-                <!-- Se llenará dinámicamente con JS -->
-            </div>
-        </section>
-
-        <!-- SECCIÓN: Razones Dinámicas -->
-        <section class="max-w-4xl mx-auto px-6 py-10 text-center">
-            <div class="glass p-10 rounded-[3rem] border-2 border-white/5 shadow-inner">
-                <h3 class="romantic-font text-4xl text-silver mb-8">Razones por las que te amo...</h3>
-                <div id="reason-text"
-                    class="text-2xl text-gray-400 italic mb-10 min-h-[4rem] flex items-center justify-center px-6">
-                    Presiona el botón para descubrir un pedacito de mi corazón
-                </div>
-                <button onclick="nextReason()"
-                    class="bg-gradient-to-r from-red-900 to-black text-silver font-bold py-4 px-12 rounded-full border border-white/10 transition-all duration-300 transform hover:scale-105 hover:shadow-lg active:scale-95 shadow-md">
-                    Siguiente razón ❤️
-                </button>
-            </div>
-        </section>
-
-        <!-- BOTÓN WHATSAPP -->
-        <div class="text-center pb-24">
-            <a href="https://wa.me/51900779111?text=%C2%A1Amor%2C%20vi%20la%20p%C3%A1gina%20y%20me%20encant%C3%B3%21%20Gracias%20por%20este%20detalle%20tan%20hermoso%20%E2%9D%A4%EF%B8%8F"
-                target="_blank"
-                class="inline-flex items-center gap-3 bg-[#25D366] text-white font-bold py-4 px-10 rounded-full shadow-xl hover:scale-105 transition-transform hover:shadow-2xl">
-                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                    <path
-                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-                </svg>
-                ¡Dímelo por WhatsApp! 💬
-            </a>
-        </div>
-
         <!-- BOTÓN MODO AMANECER (FLOTANTE IZQUIERDA) -->
         <button id="dawn-btn" onclick="toggleDawnMode()"
             class="fixed bottom-6 left-6 z-50 bg-black/90 backdrop-blur-sm p-4 rounded-full shadow-2xl border-2 border-zinc-800 text-2xl hover:scale-110 transition-transform duration-300 text-silver">
             🌅
         </button>
 
-        <!-- MURO DE RECUERDOS -->
-        <section class="max-w-6xl mx-auto px-6 py-32">
-            <h3 class="romantic-font text-center text-6xl text-silver mb-4">Nuestra Galería de Amor</h3>
-            <p class="text-center text-gray-500 mb-16 italic text-lg font-light">Nueve momentos que definen nuestra
-                historia</p>
-
-            <div class="text-center mb-16">
-                <button id="unlockGalleryBtn" onclick="unlockGallery()"
-                    class="bg-black text-silver border-2 border-zinc-800 hover:bg-zinc-900 hover:text-white font-bold py-5 px-14 rounded-full shadow-lg transition-all duration-500 transform hover:scale-110 flex items-center gap-4 mx-auto group">
-                    <span class="text-3xl group-hover:rotate-12 transition-transform">⚔️</span>
-                    Revelar nuestros recuerdos
-                </button>
-            </div>
-
-            <div id="galleryContainer" class="hidden opacity-0 transform translate-y-10 transition-all duration-1000 relative">
-                <!-- Foreground Parallax Roses -->
-                <div class="parallax-rose text-6xl top-0 -left-10" data-speed="0.15">🥀</div>
-                <div class="parallax-rose text-5xl top-1/2 -right-12" data-speed="0.25">🥀</div>
-                <div class="parallax-rose text-7xl bottom-0 -left-16" data-speed="0.1">🥀</div>
-                <div class="parallax-rose text-4xl top-1/4 -right-8" data-speed="0.3">🖤</div>
-                <div class="parallax-rose text-6xl bottom-1/4 -left-12" data-speed="0.2">🌹</div>
-                
-                <div class="photo-grid relative z-10" id="photo-grid-api">
-                    <!-- Dinámico -->
-                </div>
-            </div>
-        </section>
-
-        
         <!-- SECCIÓN: El Libro de Despedida -->
         <section class="max-w-5xl mx-auto px-6 py-24 reveal">
             <h3 class="romantic-font text-center text-5xl text-silver mb-10">Nuestro Último Capítulo</h3>
@@ -927,8 +798,7 @@
                 
                 <!-- Page Content -->
                 <div class="pl-6 w-full prose prose-invert prose-lg max-w-none text-gray-300 font-serif leading-relaxed" id="book-content" style="text-shadow: 0 1px 2px rgba(0,0,0,0.5);">
-                    
-                    
+
                     <h4 class="text-3xl text-center mb-8 text-[#d4af37] romantic-font">Para la mujer que me enseñó a amar...</h4>
                     
                     <p class="mb-6">He pasado muchas noches pensando en cómo empezar esta carta. Buscando las palabras exactas que puedan capturar todo lo que siento en este momento, pero me doy cuenta de que el idioma a veces se queda corto cuando se trata de describir algo tan inmenso como lo que vivimos. Aun así, necesito intentarlo, porque no podía irme sin dejar constancia del milagro que fue coincidir contigo en esta vida.</p>
@@ -952,7 +822,6 @@
                     <p class="text-right mt-12 font-bold text-gray-400">Siempre tuyo en el recuerdo,</p>
                     <p class="text-right text-sm text-gray-500">Juan David</p>
 
-
                 </div>
 
                 <!-- Page decorations -->
@@ -964,7 +833,6 @@
              <p class="text-gray-500 text-sm tracking-widest font-bold uppercase">Desde el 09 de Noviembre de 2022</p>
         </footer>
 
-        
     </div>
 
     <script>
@@ -972,52 +840,7 @@
         const CLAVE_CORRECTA = "09112022";
         let isAdmin = false;
 
-        const razones = [
-            "Porque tienes la sonrisa más hermosa que mis ojos han visto.",
-            "Por la paciencia infinita que me tienes.",
-            "Porque estar a tu lado me hace querer ser un hombre mejor.",
-            "Por tu forma única de cuidarme.",
-            "Porque eres mi mejor amiga y mi gran amor.",
-            "Porque amo todos nuestros planes juntos.",
-            "Porque sueño despertar contigo cada mañana.",
-            "Por tu fuerza increíble.",
-            "Porque nadie me entiende como tú.",
-            "Porque simplemente eres tú."
-        ];
-        let currentReasonIndex = -1;
-        
-
         // DATOS ESTÁTICOS DE PRUEBA
-        
-        
-        const STATIC_GALLERY = [
-            // Puedes añadir más imágenes o videos aquí:
-            // { id: 1, type: 'image', src: 'img/foto1.jpg' }
-        ];
-
-        const STATIC_JOURNAL = [
-            { id: 1, date: "09/11/2022", text: "El inicio de nuestra historia...", type: "text", attachment: null }
-        ];
-
-        const STATIC_WISHLIST = [
-            { id: 1, text: "Viajar juntos", completed: false },
-            { id: 2, text: "Adoptar un perrito", completed: true }
-        ];
-
-        const STATIC_CAPSULE_DATE = "2026-11-09T00:00:00";
-        const STATIC_CAPSULE_MSG = "¡Feliz aniversario mi amor! Este es un mensaje del pasado.";
-
-        
-
-        function nextReason() {
-            const textElement = document.getElementById('reason-text');
-            textElement.style.opacity = 0;
-            setTimeout(() => {
-                currentReasonIndex = (currentReasonIndex + 1) % razones.length;
-                textElement.innerText = razones[currentReasonIndex];
-                textElement.style.opacity = 1;
-            }, 300);
-        }
 
         document.getElementById('password').addEventListener('input', function (e) {
             let val = e.target.value.replace(/\D/g, '');
@@ -1041,10 +864,7 @@
                     document.getElementById('lock-screen').style.display = 'none';
                     document.getElementById('main-content').style.display = 'block';
                     startFlowerRain();
-                    loadJournal();
-                    loadGallery();
-                    loadWishlist();
-                    initCapsule();
+
                     updateCounter();
                     setInterval(updateCounter, 1000);
                 }, 500);
@@ -1067,128 +887,11 @@
 
         const FECHA_INICIO = new Date("2022-11-09T00:00:00");
 
-        function unlockGallery() {
-            document.getElementById('unlockGalleryBtn').style.display = 'none';
-            const gc = document.getElementById('galleryContainer');
-            gc.classList.remove('hidden');
-            setTimeout(() => gc.classList.add('opacity-100', 'translate-y-0'), 100);
-            loadGallery();
-        }
-
-        function loadGallery() {
-            const grid = document.getElementById('photo-grid-api');
-            grid.innerHTML = STATIC_GALLERY.map((item, index) => `
-                <div class="photo-frame group relative">
-                    ${item.type === 'video' ?
-                        `<video src="${item.src}" class="w-full h-full object-cover aspect-square rounded-sm" controls></video>` :
-                        `<img src="${item.src}" class="w-full h-full object-cover aspect-square rounded-sm">`
-                    }
-                    <div class="mt-6 text-center">
-                        <p class="romantic-font text-2xl text-gray-600 italic">Momento #${index + 1}</p>
-                    </div>
-                </div>
-            `).join('');
-            
-            if (STATIC_GALLERY.length === 0) {
-                 grid.innerHTML = '<p class="text-center text-gray-600 italic col-span-full">Añade imágenes en STATIC_GALLERY dentro del código.</p>';
-            }
-        }
-
         // BUZÓN DE ESCUCHA ESTÁTICO (Solo simula éxito)
-        function submitToMailbox() {
-            const input = document.getElementById('mailbox-input');
-            const success = document.getElementById('mailbox-success');
-
-            if (input.value.trim() === "") return;
-
-            input.disabled = true;
-            input.style.opacity = "0.5";
-
-            setTimeout(() => {
-                input.value = "";
-                success.style.display = "block";
-                setTimeout(() => {
-                    success.style.display = "none";
-                    input.disabled = false;
-                    input.style.opacity = "1";
-                }, 5000);
-            }, 1000);
-        }
-
-        function updateDashboard(entries) {
-            const milestoneCount = entries.length;
-            const FECHA_PLAN = new Date("2022-11-09");
-            const daysCount = Math.floor((new Date() - FECHA_PLAN) / (1000 * 60 * 60 * 24));
-            
-            document.getElementById('stat-days').innerText = daysCount;
-            document.getElementById('stat-milestones').innerText = milestoneCount;
-            
-            let dedication = 60 + (milestoneCount * 2);
-            if (dedication > 100) dedication = 100;
-            
-            document.getElementById('stat-dedication-percent').innerText = dedication + '%';
-            document.getElementById('effort-bar').style.width = dedication + '%';
-        }
-
-        function initReveal() {
-            const reveals = document.querySelectorAll('.reveal');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            reveals.forEach(r => observer.observe(r));
-        }
 
         // DIARIO DE CAMBIO ESTÁTICO
-        function loadJournal() {
-            updateDashboard(STATIC_JOURNAL);
-
-            const feed = document.getElementById('journal-feed');
-            feed.innerHTML = STATIC_JOURNAL.map(entry => {
-                let mediaHTML = '';
-                if (entry.attachment) {
-                    if (entry.type === 'image') {
-                        mediaHTML = `<img src="${entry.attachment}" class="w-full rounded-2xl mt-4 border border-white/10">`;
-                    } else if (entry.type === 'video') {
-                        mediaHTML = `<video src="${entry.attachment}" controls class="w-full rounded-2xl mt-4 border border-white/10"></video>`;
-                    } else if (entry.type === 'audio') {
-                        mediaHTML = `<audio src="${entry.attachment}" controls class="w-full mt-4"></audio>`;
-                    } else if (entry.type === 'pdf') {
-                        mediaHTML = `<a href="${entry.attachment}" target="_blank" class="flex items-center gap-3 bg-red-900/20 p-4 rounded-xl mt-4 border border-red-900/40 text-silver hover:bg-red-900/40 transition-all">
-                            <span>📄</span> Ver documento PDF
-                        </a>`;
-                    }
-                }
-
-                return `
-                    <div class="journal-entry group relative reveal">
-                        <div class="journal-date">${entry.date}</div>
-                        <p class="text-silver/80 text-lg leading-relaxed">${entry.text}</p>
-                        ${mediaHTML}
-                    </div>
-                `;
-            }).join('');
-
-            initReveal();
-        }
 
         // LISTA DE DESEOS ESTÁTICA
-        function loadWishlist() {
-            const container = document.getElementById('wishlist-container');
-            if (!container) return;
-            
-            container.innerHTML = STATIC_WISHLIST.map(item => `
-                <div class="glass p-5 rounded-2xl flex items-center gap-4 group cursor-pointer border border-white/5 transition-all">
-                    <span class="text-2xl">${item.completed ? '✅' : '🌙'}</span>
-                    <span class="text-silver/80 ${item.completed ? 'line-through opacity-50' : ''} flex-1">${item.text}</span>
-                </div>
-            `).join('') || '<p class="text-center text-gray-600 italic col-span-2">Pronto habrá sueños aquí...</p>';
-        }
 
         // MODO AMANECER
         let isDawnMode = false;
@@ -1206,39 +909,6 @@
         }
 
         // CÁPSULA DEL TIEMPO ESTÁTICA
-        let capsuleTargetDate;
-        let capsuleSecretMessage;
-
-        function initCapsule() {
-            capsuleTargetDate = new Date(STATIC_CAPSULE_DATE);
-            capsuleSecretMessage = STATIC_CAPSULE_MSG;
-            
-            updateCapsuleTimer();
-            setInterval(updateCapsuleTimer, 1000);
-        }
-
-        function updateCapsuleTimer() {
-            if (!capsuleTargetDate) return;
-            const now = new Date().getTime();
-            const dist = capsuleTargetDate.getTime() - now;
-
-            if (dist < 0) {
-                document.getElementById('capsule-locked').classList.add('hidden');
-                document.getElementById('capsule-unlocked').classList.remove('hidden');
-                document.getElementById('capsule-content').innerText = capsuleSecretMessage;
-                return;
-            }
-
-            const days = Math.floor(dist / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((dist % (1000 * 60)) / 1000);
-
-            document.getElementById('days').innerText = days.toString().padStart(2, '0');
-            document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
-        }
 
         // CIELO ESTRELLADO REACTIVO
         const canvas = document.getElementById('star-canvas');
