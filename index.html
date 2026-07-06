@@ -725,15 +725,14 @@
     
 
     <!-- PANTALLA DE BLOQUEO -->
-    <div id="music-player"></div>
+    
     <div id="lock-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-black p-6 text-center">
         <div class="glass p-10 rounded-[2.5rem] shadow-2xl max-w-md w-full border-2 border-white/10">
             <div class="mb-6 inline-block p-4 bg-red-950/50 rounded-full animate-bounce">
                 <span class="text-3xl">🥀</span>
             </div>
-            <h1 class="romantic-font text-5xl text-silver mb-6">Hola, mi amor...</h1>
-            <p class="text-gray-400 mb-8 font-medium">Introduce nuestra fecha especial (DD/MM/AAAA) para abrir tu
-                regalo:</p>
+            <h1 class="romantic-font text-5xl text-silver mb-6">Para ti...</h1>
+            <p class="text-gray-400 mb-8 font-medium">Nuestra fecha siempre será un recuerdo hermoso (DD/MM/AAAA):</p>
 
             <div class="relative max-w-xs mx-auto">
                 <input type="text" id="password" maxlength="10" placeholder="DD/MM/AAAA"
@@ -853,31 +852,6 @@
             </div>
         </section>
 
-        <!-- SECCIÓN: El Buzón de Escucha -->
-        <section class="max-w-4xl mx-auto px-6 py-24 text-center">
-            <div class="mailbox-container glass p-12 rounded-[3rem] border border-white/10">
-                <h3 class="romantic-font text-4xl text-silver mb-4">El Buzón de Escucha</h3>
-                <p class="text-gray-500 mb-8 italic">Este espacio es tuyo. Cuando estés lista, aquí estaré para escucharte sin juicios.</p>
-                
-                <textarea id="mailbox-input" 
-                    placeholder="Escribe lo que necesites decirme..." 
-                    class="w-full h-40 p-6 rounded-2xl mb-6 text-lg"
-                ></textarea>
-                
-                <button onclick="submitToMailbox()" 
-                    class="bg-gradient-to-r from-red-900 to-black text-silver font-bold py-4 px-12 rounded-full border border-white/10 transition-all duration-300 transform hover:scale-105">
-                    Enviar a mi corazón 🥀
-                </button>
-                
-                <div id="mailbox-success" class="submission-success">
-                    <span class="text-2xl mr-2">✔️</span> He recibido tu mensaje en mi corazón. Gracias por confiar.
-                </div>
-            </div>
-        </section>
-
-
-
-
         <!-- SECCIÓN: Razones Dinámicas -->
         <section class="max-w-4xl mx-auto px-6 py-10 text-center">
             <div class="glass p-10 rounded-[3rem] border-2 border-white/5 shadow-inner">
@@ -905,49 +879,6 @@
                 ¡Dímelo por WhatsApp! 💬
             </a>
         </div>
-
-        <!-- SECCIÓN: Cápsula del Tiempo -->
-        <section class="max-w-4xl mx-auto px-6 py-24 reveal">
-            <div class="glass p-12 rounded-[4rem] text-center border-2 border-red-900/20 shadow-2xl relative overflow-hidden">
-                <!-- Background Glow -->
-                <div class="absolute -top-24 -right-24 w-64 height-64 bg-red-900/10 rounded-full blur-3xl"></div>
-                
-                <h3 class="romantic-font text-5xl text-silver mb-4">Cápsula del Tiempo</h3>
-                <p class="text-gray-400 mb-10 italic">"Un mensaje guardado en el silencio del tiempo, esperando el momento exacto..."</p>
-                
-                <div id="capsule-locked">
-                    <div class="capsule-timer mb-10">
-                        <div class="timer-unit">
-                            <span id="days" class="timer-val">00</span>
-                            <span class="timer-label">Días</span>
-                        </div>
-                        <div class="timer-unit">
-                            <span id="hours" class="timer-val">00</span>
-                            <span class="timer-label">Hs</span>
-                        </div>
-                        <div class="timer-unit">
-                            <span id="minutes" class="timer-val">00</span>
-                            <span class="timer-label">Min</span>
-                        </div>
-                        <div class="timer-unit">
-                            <span id="seconds" class="timer-val">00</span>
-                            <span class="timer-label">Seg</span>
-                        </div>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <span class="text-6xl mb-6 opacity-40">🔒</span>
-                        <p class="text-crimson font-bold tracking-widest uppercase text-sm">Contenido Protegido por el Tiempo</p>
-                    </div>
-                </div>
-
-                <div id="capsule-unlocked" class="hidden">
-                    <div class="text-6xl mb-6">🔓</div>
-                    <div id="capsule-content" class="text-2xl italic leading-relaxed text-silver bg-white/5 p-8 rounded-3xl border border-white/10">
-                        <!-- Mensaje secreto -->
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- BOTÓN MODO AMANECER (FLOTANTE IZQUIERDA) -->
         <button id="dawn-btn" onclick="toggleDawnMode()"
@@ -983,15 +914,33 @@
             </div>
         </section>
 
+        
+        <!-- SECCIÓN: El Libro de Despedida -->
+        <section class="max-w-5xl mx-auto px-6 py-24 reveal">
+            <h3 class="romantic-font text-center text-5xl text-silver mb-10">Nuestro Último Capítulo</h3>
+            
+            <!-- Book Container -->
+            <div class="relative w-full max-w-4xl mx-auto bg-[#1a1515] border-2 border-[#3d2b2b] rounded-r-3xl rounded-l-md shadow-2xl p-8 md:p-16 flex flex-col items-center">
+                
+                <!-- Book Binding / Spine effect -->
+                <div class="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#0a0505] to-[#1a1515] border-r border-[#3d2b2b] rounded-l-md shadow-[inset_-5px_0_15px_rgba(0,0,0,0.8)]"></div>
+                
+                <!-- Page Content -->
+                <div class="pl-6 w-full prose prose-invert prose-lg max-w-none text-gray-300 font-serif leading-relaxed" id="book-content" style="text-shadow: 0 1px 2px rgba(0,0,0,0.5);">
+                    <p class="italic text-center text-gray-500">Aquí irá tu carta final...</p>
+                    <p class="italic text-center text-gray-500 text-sm mt-4">(Esperando el archivo .txt para insertar el texto)</p>
+                </div>
+
+                <!-- Page decorations -->
+                <div class="absolute bottom-6 right-8 text-red-900/40 text-4xl font-serif italic opacity-50">~ Fin ~</div>
+            </div>
+        </section>
+
         <footer class="text-center py-20 border-t border-white/5 mt-10">
              <p class="text-gray-500 text-sm tracking-widest font-bold uppercase">Desde el 09 de Noviembre de 2022</p>
         </footer>
 
-        <!-- Controles de Música (Flotante) -->
-        <button id="music-btn" onclick="toggleMusic()"
-            class="fixed bottom-6 right-6 z-50 bg-black/90 backdrop-blur-sm p-4 rounded-full shadow-2xl border-2 border-zinc-800 text-2xl hover:scale-110 transition-transform duration-300 text-silver">
-            🔇
-        </button>
+        
     </div>
 
     <script>
@@ -1012,11 +961,10 @@
             "Porque simplemente eres tú."
         ];
         let currentReasonIndex = -1;
-        let player;
-        let isMusicPlaying = false;
+        
 
         // DATOS ESTÁTICOS DE PRUEBA
-        const STATIC_SONG_ID = 'b_CpWmkhwq0';
+        
         
         const STATIC_GALLERY = [
             // Puedes añadir más imágenes o videos aquí:
@@ -1035,48 +983,7 @@
         const STATIC_CAPSULE_DATE = "2026-11-09T00:00:00";
         const STATIC_CAPSULE_MSG = "¡Feliz aniversario mi amor! Este es un mensaje del pasado.";
 
-        // MÚSICA DINÁMICA
-        async function onYouTubeIframeAPIReady() {
-            try {
-                player = new YT.Player('music-player', {
-                    height: '1',
-                    width: '1',
-                    videoId: STATIC_SONG_ID,
-                    playerVars: {
-                        'playsinline': 1,
-                        'controls': 0,
-                        'loop': 1,
-                        'playlist': STATIC_SONG_ID,
-                        'origin': window.location.origin,
-                        'enablejsapi': 1
-                    },
-                    events: {
-                        'onReady': onPlayerReady
-                    }
-                });
-            } catch (err) {
-                console.error("Error cargando música:", err);
-            }
-        }
-
-        function onPlayerReady(event) {
-            // Player is ready
-        }
-
-        function toggleMusic() {
-            if (!player) return;
-            const btn = document.getElementById('music-btn');
-            if (isMusicPlaying) {
-                player.pauseVideo();
-                btn.innerHTML = '🔇';
-                btn.classList.remove('animate-spin-slow');
-            } else {
-                player.playVideo();
-                btn.innerHTML = '🎵';
-                btn.classList.add('animate-spin-slow');
-            }
-            isMusicPlaying = !isMusicPlaying;
-        }
+        
 
         function nextReason() {
             const textElement = document.getElementById('reason-text');
@@ -1379,9 +1286,9 @@
 
         // EFECTO MÁQUINA DE ESCRIBIR
         const letterContent = {
-            line1: "Edith, he tenido tiempo para reflexionar y entiendo que tenías razón. Me pediste cambios que no escuché a tiempo, y hoy entiendo que mi descuido te agotó. Me dolió ver que la distancia y la presencia de alguien más son el resultado de mi falta de atención.",
-            line2: "No estoy aquí para presionarte, sino para demostrarte que entendí lo que vales. He estado trabajando en mi imagen, en mi actitud y en ser el hombre detallista que siempre mereciste. Este proyecto es solo un reflejo de que mi cambio ya no es por miedo a perderte, sino porque quiero ser mejor.",
-            quote: "\"Mi intención es recuperarte y demostrarte que la versión de mi que siempre quisiste ya es una realidad.\""
+            line1: "Ha pasado el tiempo y hoy quiero dedicarte estas palabras no para pedirte que vuelvas, sino para agradecerte. Fuiste mi primer beso, mi gran amor y una de las etapas más hermosas de mi vida.",
+            line2: "Me llevo conmigo la calidez de tus abrazos y la luz de tu sonrisa. Entiendo que nuestros caminos se separan, pero siempre desearé lo mejor para ti, porque alguien tan especial merece ser inmensamente feliz.",
+            quote: "\"Gracias por haber sido mi historia más bonita. Te digo adiós con el corazón lleno de amor y gratitud.\""
         };
 
         const typeWriter = async (elementId, text, speed = 50) => {
@@ -1521,7 +1428,7 @@
         });
 
     </script>
-    <script src="https://www.youtube.com/iframe_api"></script>
+    
 </body>
 
 </html>
